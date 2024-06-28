@@ -1,0 +1,54 @@
+<main>
+    <div routerLink="/home" class="back-button">
+        <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
+    </div>
+    <section class="content">
+       
+       <div>
+            <div class="search">
+                <div>
+                    <div class="title">
+                        ВЕТЕРАНЫ ВОВ ГОРОДА ЗАРЕЧНЫЙ
+                    </div>
+                    <div class="search-title">
+                        Поиск человека
+                    </div>
+                    <div class="input-wrapper">
+                        <input (input)="onInputChange($event)" class="input" value={{value}}/>
+                        <div>   
+                            <button (click)="getVeterans()" class="search-button">Найти</button>
+                        </div>
+                   
+                    </div>
+                    
+                    <div>
+                        <div style="" class="simple-keyboard test2"></div>
+                    </div> 
+                </div>
+                
+            
+            </div>
+       </div>
+        
+        <div class="letter-filter-wrapper">
+            <ul class="letter-filter">
+                <ng-container *ngFor="let letter of letterArray">
+                    <li id="{{letter}}" class="letter-filter-item">{{letter}}</li>
+                </ng-container>
+            </ul>
+        </div>
+
+        <div class="card-grid">
+            <ng-container *ngFor="let veteran of veteranArray">
+                <div routerLink="/veteran/{{veteran.name}}" class="card">
+                    <div style="background-image: url('./assets/imgs/template.jpg');" class="card-header"></div>
+                    <div class="card-footer">
+                     {{veteran.name}}
+                    </div>
+                </div>
+            </ng-container>
+          
+           
+        </div>
+    </section>
+</main>

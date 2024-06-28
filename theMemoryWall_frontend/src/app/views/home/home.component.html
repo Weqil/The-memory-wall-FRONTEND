@@ -1,0 +1,24 @@
+<main>
+    <div>
+        <div class="video-wrapper">
+            <video class="video"  src="./assets/videos/fire.mp4"  loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"></video>
+        </div>
+    </div>
+   
+    <div class="button-grid">
+        <div routerLink="/veterans/wow" class="button-wrapper">
+            <div style="background-image: url('assets/imgs/wow.jpg');" class="button-grid-item"></div>
+            <div class="button-grid-item_text">ВЕТЕРАНЫ ВОВ ЗАРЕЧНОГО</div>
+        </div>
+        
+        <div  routerLink="/veterans/polk" class="button-wrapper">
+            <div style="background-image: url('assets/imgs/besmertnii.jpg');" class="button-grid-item"></div>
+            <div class="button-grid-item_text">БЕСМЕРТНЫЙ ПОЛК</div>
+        </div>
+        
+        <div routerLink="/memory" class="button-wrapper">
+            <div style="background-image: url('assets/imgs/pamyat.jpg');" class="button-grid-item"></div>
+            <div class="button-grid-item_text">ПАМЯТЬ НАРОДА</div>
+        </div>
+    </div>
+</main>

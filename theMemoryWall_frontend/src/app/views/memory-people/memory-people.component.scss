@@ -1,0 +1,19 @@
+
+
+.content{
+    padding-top: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+.title{
+    color: #fff;
+    font-family: 'gotham-bold';
+    font-size: 4vh;
+    margin-bottom: 2rem;
+}
+.iframe{
+    transform: scale();
+     transform-origin: 0 0;
+     width: 100%; /* Ширина 50% от родительского контейнера */
+     height: 100vh; /* Автоматическая высота, чтобы сохранить пропорции */
+}
