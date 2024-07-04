@@ -1,0 +1,7 @@
+<ng-container *ngIf="letter === currentletter">
+    <li (click)="setFilter()" id="{{letter}}" class="letter-filter-item_active ">{{letter}}</li>
+</ng-container>
+
+<ng-container *ngIf="letter !== currentletter">
+    <li (click)="setFilter()" id="{{letter}}" class="letter-filter-item ">{{letter}}</li>
+</ng-container>

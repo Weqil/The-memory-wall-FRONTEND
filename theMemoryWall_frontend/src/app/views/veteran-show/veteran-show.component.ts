@@ -21,7 +21,7 @@ export class VeteranShowComponent {
     private rout: ActivatedRoute
   )
    { }
-   public url:string = `${environment.backProtocol}://${environment.backHost}:${environment.backPort}/storage/files/${this.rout.snapshot.params['id']}.pdf`; 
+   public url:string = `${this.rout.snapshot.params['id']}.pdf`; 
  
   
 }

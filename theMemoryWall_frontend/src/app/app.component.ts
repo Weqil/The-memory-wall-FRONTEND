@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { HistoryService } from './services/history.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,10 +14,11 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor
   (
-    private router: Router
+    private router: Router,
+    private historyService: HistoryService
    ) 
    {
 
@@ -24,6 +26,6 @@ export class AppComponent implements OnInit {
   public title = 'theMemoryWall_frontend';
   public currentRout: string = ''
   ngOnInit(): void {
-
+    
   }
 }

@@ -3,8 +3,11 @@ import { Routes, RouterModule,RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Keyboard from "simple-keyboard";
 import { VeteransService } from '../../services/veterans.service';
-import { Veteran } from '../../models/veteran';
+import { IVeteran } from '../../models/veteran';
 import { provideHttpClient } from '@angular/common/http';
+import { CardGridComponent } from '../../components/card-grid/card-grid.component';
+import { Router } from '@angular/router';
+import { LetterComponent } from '../../components/letter/letter.component';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -12,6 +15,8 @@ import { provideHttpClient } from '@angular/common/http';
     RouterModule,
     RouterLink,
     CommonModule,
+    CardGridComponent,
+    LetterComponent
     
   ],
   providers: [VeteransService],
@@ -21,12 +26,13 @@ import { provideHttpClient } from '@angular/common/http';
 
 
 export class VeteransComponent  implements OnInit {
-    constructor(){}
+    constructor(private route:Router){}
     public veteransService:VeteransService = inject(VeteransService);
-    public veteranArray:Veteran[] = [];
+    public veteranArray:IVeteran[] = [];
     public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я'.split(' ');
     public keyboard: any;
     public value = "";
+    public veteransShowUrl:string = this.route.url
     public greekLayout:any = {
       'default': [
         'й ц у к е н г ш щ з х ъ {bksp}',
@@ -71,15 +77,17 @@ export class VeteransComponent  implements OnInit {
     onKeyPress = (button: string) => {
     
     };
-  
-  getVeterans():void{
+
+ 
+  getVeterans(param:string):void{
     this.veteransService.getVeterans(this.value).pipe().subscribe((res:any)=>{
       this.veteranArray = res.heroes;
       console.log(this.veteranArray[0])
     })
   }
   ngOnInit(): void {
-    this.getVeterans()
+
+
   }
 
 }

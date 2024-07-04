@@ -1,3 +1,4 @@
+
 <main>
     <div routerLink="/home" class="back-button">
         <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
@@ -7,22 +8,31 @@
        <div>
             <div class="search">
                 <div>
-                    <div class="title">
-                        ВЕТЕРАНЫ ВОВ ГОРОДА ЗАРЕЧНЫЙ
-                    </div>
+                    <ng-container *ngIf="veteransShowUrl ==='/veterans/wow'">
+                        <div class="title">
+                            ВЕТЕРАНЫ ВОВ ГОРОДА ЗАРЕЧНЫЙ
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="veteransShowUrl ==='/veterans/polk'">
+                        <div class="title">
+                            БЕСМЕРТНЫЙ ПОЛК
+                        </div>
+                    </ng-container>
+                   
                     <div class="search-title">
                         Поиск человека
                     </div>
+
                     <div class="input-wrapper">
                         <input (input)="onInputChange($event)" class="input" value={{value}}/>
                         <div>   
-                            <button (click)="getVeterans()" class="search-button">Найти</button>
+                            <button class="search-button">Найти</button>
                         </div>
                    
                     </div>
                     
                     <div>
-                        <div style="" class="simple-keyboard test2"></div>
+                        <div style="" class="simple-keyboard"></div>
                     </div> 
                 </div>
                 
@@ -31,24 +41,13 @@
        </div>
         
         <div class="letter-filter-wrapper">
-            <ul class="letter-filter">
+            <div class="letter-filter">
                 <ng-container *ngFor="let letter of letterArray">
-                    <li id="{{letter}}" class="letter-filter-item">{{letter}}</li>
+                    <app-letter [letter]="letter"></app-letter>
                 </ng-container>
-            </ul>
+            </div>
         </div>
 
-        <div class="card-grid">
-            <ng-container *ngFor="let veteran of veteranArray">
-                <div routerLink="/veteran/{{veteran.name}}" class="card">
-                    <div style="background-image: url('./assets/imgs/template.jpg');" class="card-header"></div>
-                    <div class="card-footer">
-                     {{veteran.name}}
-                    </div>
-                </div>
-            </ng-container>
-          
-           
-        </div>
+       <app-card-grid [veterans]="veteranArray"></app-card-grid>
     </section>
 </main>
