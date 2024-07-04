@@ -19,6 +19,7 @@ public currentletter:string = ''
 
 setFilter(){
   this.filterService.setLetter(this.letter)
+  this.filterService.changeFilter.next(true)
 }
 
 ngOnInit(): void {

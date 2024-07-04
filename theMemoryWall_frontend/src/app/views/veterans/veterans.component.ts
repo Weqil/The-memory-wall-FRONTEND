@@ -9,6 +9,7 @@ import { CardGridComponent } from '../../components/card-grid/card-grid.componen
 import { Router } from '@angular/router';
 import { LetterComponent } from '../../components/letter/letter.component';
 import { QueryBuilderService } from '../../services/query-builder.service';
+import { FilterService } from '../../services/filter.service';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -29,11 +30,12 @@ import { QueryBuilderService } from '../../services/query-builder.service';
 export class VeteransComponent  implements OnInit {
     constructor(
       private route:Router,
-      private queryBuilderService: QueryBuilderService
+      private queryBuilderService: QueryBuilderService,
+      private filterService: FilterService
     ){}
     public veteransService:VeteransService = inject(VeteransService);
     public veteranArray:IVeteran[] = [];
-    public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я'.split(' ');
+    public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я Z A'.split(' ');
     public keyboard: any;
     public value = "";
     public veteransShowUrl:string = this.route.url
@@ -95,9 +97,17 @@ export class VeteransComponent  implements OnInit {
       console.log(res.heroes.data)
     })
   }
+
+  changeLetter(){
+    this.filterService.changeFilter.pipe().subscribe((event)=>{
+      this.getVeteransByRubricId()
+    })
+  }
+  
   ngOnInit(): void {
 
     this.getVeteransByRubricId()
+    this.changeLetter()
 
   }
 
