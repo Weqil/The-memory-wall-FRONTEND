@@ -8,7 +8,7 @@ import { IQuery } from '../models/query';
 })
 export class QueryBuilderService {
 
-  public rubricId:number[] = []
+  public rubricIds:string  = ''
   public queryParams:IQuery = {};
   public letter:string = ''
   public paginateVeterans:BehaviorSubject<string> = new BehaviorSubject<string>('')
@@ -17,7 +17,7 @@ export class QueryBuilderService {
   constructor(private filterService:FilterService) { }
 
   updateParams():void{
-    this.rubricId = this.filterService.getRubricId()
+    this.rubricIds = this.filterService.getRubricIds() 
     this.letter = this.filterService.getLetter()
   }
 
@@ -34,7 +34,7 @@ export class QueryBuilderService {
 
   veteranForPage():void{
     this.queryParams = {
-      rubricId: this.rubricId,
+      rubricIds: this.rubricIds,
       letter: this.letter,
       limit: this.limitVeterans.value,
       page: this.paginateVeterans.value

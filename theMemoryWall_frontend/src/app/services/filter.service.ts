@@ -9,22 +9,24 @@ export class FilterService {
   constructor() { }
   public letter: BehaviorSubject<string> = new BehaviorSubject('')
 
-  public rubricId: BehaviorSubject<number[]> = new BehaviorSubject([0])
+  public rubricIds: BehaviorSubject<string> = new BehaviorSubject(this.getRubricIds() || '')
 
   public changeFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false,
   )
 
-  getRubricId() {
-    return this.rubricId.getValue();
+  getRubricIds() {
+      return localStorage.getItem('rubric') || '';
   }
-  setRubricId(id:number[]) {
-    this.rubricId.next(id);
-  }
+  setRubricIds(id:string) {
+      localStorage.setItem('rubric', id);
+      this.rubricIds.next(id);
+    }
 
   removeFilters() {
-    this.rubricId.next([])
+    this.rubricIds.next('')
     this.letter.next('')
+    localStorage.removeItem('rubric');
   }
 
 

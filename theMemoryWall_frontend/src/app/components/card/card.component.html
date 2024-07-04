@@ -1,6 +1,16 @@
-<div routerLink="/veteran/{{veteran.name}}" class="card">
-    <div style="background-image: url('./assets/imgs/template.jpg');" class="card-header"></div>
+<div routerLink="/veteran/{{veteran.first_name}}" class="card">
+    <ng-container *ngIf="!veteran.photos[0].local">
+        <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
+    </ng-container>
+
+    <ng-container *ngIf="veteran.photos[0].local">
+        <div style="background-image: url('{{protocol}}://{{host}}:{{port}}/{{veteran.photos[0].url}}');" class="card-header"></div>
+    </ng-container>
+
     <div class="card-footer">
-     {{veteran.name}}
+     {{veteran.first_name}} {{veteran.last_name}}
+     <div>
+        {{veteran.birthday}} - {{veteran.deathday}}
+     </div>
     </div>
 </div>

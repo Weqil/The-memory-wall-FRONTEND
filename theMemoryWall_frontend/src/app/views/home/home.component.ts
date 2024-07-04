@@ -4,13 +4,16 @@ import { RubricService } from '../../services/rubric.service';
 import { QueryBuilderService } from '../../services/query-builder.service';
 import { FilterService } from '../../services/filter.service';
 import { MainButtonComponent } from '../../components/main-button/main-button.component';
+import { CommonModule } from '@angular/common';
+import { IRubrics } from '../../models/rubrics';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     RouterModule,
     RouterLink,
-    MainButtonComponent
+    MainButtonComponent,
+    CommonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -23,10 +26,11 @@ export class HomeComponent implements OnInit {
   ){
 
   }
-
+  public rubrics?:IRubrics[]
   getRubric():void{
-    this.rubricService.getRubric(this.queryBuilderService.quertyBuilder('veteransForPage')).subscribe((data) => {
-      console.log(data);
+    this.rubricService.getRubric(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((data) => {
+      this.rubrics = data.rubrics;
+      console.log(this.rubrics)
     });
   }
 

@@ -1,1 +1,4 @@
-<p>main-button works!</p>
+<div (click)="setFilter()" routerLink="/veterans/{{rubric.id }}" class="button-wrapper">
+    <div style="background-image: url('{{protocol}}://{{host}}:{{port}}{{rubric.image}}');" class="button-grid-item"></div>
+    <div class="button-grid-item_text">{{rubric.name }}</div>
+</div> 

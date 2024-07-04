@@ -8,6 +8,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { CardGridComponent } from '../../components/card-grid/card-grid.component';
 import { Router } from '@angular/router';
 import { LetterComponent } from '../../components/letter/letter.component';
+import { QueryBuilderService } from '../../services/query-builder.service';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -26,7 +27,10 @@ import { LetterComponent } from '../../components/letter/letter.component';
 
 
 export class VeteransComponent  implements OnInit {
-    constructor(private route:Router){}
+    constructor(
+      private route:Router,
+      private queryBuilderService: QueryBuilderService
+    ){}
     public veteransService:VeteransService = inject(VeteransService);
     public veteranArray:IVeteran[] = [];
     public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я'.split(' ');
@@ -85,8 +89,15 @@ export class VeteransComponent  implements OnInit {
       console.log(this.veteranArray[0])
     })
   }
+  getVeteransByRubricId(){
+    this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
+      this.veteranArray = res.heroes.data;
+      console.log(res.heroes.data)
+    })
+  }
   ngOnInit(): void {
 
+    this.getVeteransByRubricId()
 
   }
 

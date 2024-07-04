@@ -1,0 +1,77 @@
+
+
+@media (orientation: landscape) {
+    .video{
+        margin: auto;
+        width: 50vw;
+        height: 50vh;
+        object-fit: fill;
+     }
+     .button{
+         width: 10vh;
+         height: 10vh;
+         background:#fff;
+     }
+     .video-wrapper{
+        display: flex;
+        justify-content: center;
+         object-fit: cover;
+         
+     }
+     .button-grid-item{
+        cursor: pointer;
+        width: 20vw;
+        height: 20vh;
+        background-size: 20vw 20vh;
+        background-repeat: no-repeat;
+        object-fit: cover;
+    }
+    .button-grid{
+        margin-top: 2vw;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(3, 20vw);
+        justify-content: center;
+        grid-gap: 1em 6vw;
+   }
+}
+
+
+@media (orientation:portrait) {
+    .button-grid-item{
+        cursor: pointer;
+        background-size: 100% 12vh;
+        background-repeat: no-repeat;
+        object-fit: fill;
+        width: 30vw;
+        height: 12vh;
+    }
+    .video{
+        margin: auto;
+        width: 100vw;
+        height: 40vh;
+        object-fit: fill;
+     }
+    
+     .video-wrapper{
+        display: flex;
+        justify-content: center;
+         object-fit: cover;
+     }
+     .button-grid{
+        margin-top: 10vw;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(3, 30vw);
+        justify-content: center;
+        grid-gap: 1em 3vw;
+   }
+}
+
+.button-grid-item_text{
+    margin-top: 0.5vh;
+    color: #fff;
+    text-align: center;
+    font-family: 'gotham-bold';
+    font-size: 1.6vh;
+}
