@@ -3,11 +3,13 @@ import { IRubrics } from '../../models/rubrics';
 import { environment } from '../../../environments/environments';
 import { RouterLink } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-main-button',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    CommonModule
   ],
   templateUrl: './main-button.component.html',
   styleUrl: './main-button.component.scss'

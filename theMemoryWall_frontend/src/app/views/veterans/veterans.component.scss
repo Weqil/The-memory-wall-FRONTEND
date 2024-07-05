@@ -5,7 +5,24 @@
     color: #fff;
     font-family: 'gotham-bold';
     font-size: 1.5vh;
-    border-radius: 0.5vh;
+    border-radius: 0.3vh;
+    margin-left: 1vh;
+    border: none;
+    transition: 0.2s;
+    cursor: pointer;
+    margin-top: -1vh;
+}
+.search-button:active{
+    border-style: outset;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgb(185, 31, 31);
+    width: 10.5vh;
+    height: 4.3vh;
+    color: #fff;
+    font-family: 'gotham-bold';
+    font-size: 1.5vh;
+    border-radius: 0.3vh;
     margin-left: 1vh;
     border: none;
     margin-top: -1vh;

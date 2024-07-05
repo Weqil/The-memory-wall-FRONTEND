@@ -1,15 +1,16 @@
 import { Component, OnInit,inject } from '@angular/core';
-import { Routes, RouterModule,RouterLink } from '@angular/router';
+import { Routes, RouterModule,RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Keyboard from "simple-keyboard";
 import { VeteransService } from '../../services/veterans.service';
 import { IVeteran } from '../../models/veteran';
 import { provideHttpClient } from '@angular/common/http';
 import { CardGridComponent } from '../../components/card-grid/card-grid.component';
-import { Router } from '@angular/router';
+import { Router, } from '@angular/router';
 import { LetterComponent } from '../../components/letter/letter.component';
 import { QueryBuilderService } from '../../services/query-builder.service';
 import { FilterService } from '../../services/filter.service';
+
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -18,7 +19,8 @@ import { FilterService } from '../../services/filter.service';
     RouterLink,
     CommonModule,
     CardGridComponent,
-    LetterComponent
+    LetterComponent,
+   
     
   ],
   providers: [VeteransService],
@@ -29,16 +31,17 @@ import { FilterService } from '../../services/filter.service';
 
 export class VeteransComponent  implements OnInit {
     constructor(
-      private route:Router,
+
+      private route:ActivatedRoute,
       private queryBuilderService: QueryBuilderService,
       private filterService: FilterService
     ){}
     public veteransService:VeteransService = inject(VeteransService);
     public veteranArray:IVeteran[] = [];
-    public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я Z A'.split(' ');
+    public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я'.split(' ');
     public keyboard: any;
     public value = "";
-    public veteransShowUrl:string = this.route.url
+    public veteransShowUrl:string = this.route.snapshot.params['id']
     public greekLayout:any = {
       'default': [
         'й ц у к е н г ш щ з х ъ {bksp}',
@@ -73,10 +76,15 @@ export class VeteransComponent  implements OnInit {
 
     onInputChange = (event: any) => {
       this.keyboard.setInput(event.target.value);
+
     };
 
     onChange = (input: string) => {
       this.value = input;
+      this.filterService.setFullName(this.value)
+      if(this.value.length <= 0) {
+        this.getVeteransByRubricId()
+      }
   
     };
 
@@ -84,7 +92,7 @@ export class VeteransComponent  implements OnInit {
     
     };
 
- 
+
   getVeterans(param:string):void{
     this.veteransService.getVeterans(this.value).pipe().subscribe((res:any)=>{
       this.veteranArray = res.heroes;
@@ -92,10 +100,19 @@ export class VeteransComponent  implements OnInit {
     })
   }
   getVeteransByRubricId(){
-    this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
-      this.veteranArray = res.heroes.data;
-      console.log(res.heroes.data)
-    })
+    if(localStorage.getItem('rubric')){
+      this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
+        this.veteranArray = res.heroes.data;
+        console.log(res.heroes.data)
+      })
+    } else{
+      this.filterService.setRubricIds(this.veteransShowUrl)
+      this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
+        this.veteranArray = res.heroes.data;
+        console.log(res.heroes.data)
+      })
+    }
+  
   }
 
   changeLetter(){

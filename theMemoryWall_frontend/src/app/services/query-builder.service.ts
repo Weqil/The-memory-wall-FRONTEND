@@ -11,6 +11,7 @@ export class QueryBuilderService {
   public rubricIds:string  = ''
   public queryParams:IQuery = {};
   public letter:string = ''
+  public fullName:string = ''
   public paginateVeterans:BehaviorSubject<string> = new BehaviorSubject<string>('')
   public limitVeterans:BehaviorSubject<number> = new BehaviorSubject<number>(10)
 
@@ -19,6 +20,7 @@ export class QueryBuilderService {
   updateParams():void{
     this.rubricIds = this.filterService.getRubricIds() 
     this.letter = this.filterService.getLetter()
+    this.fullName = this.filterService.getFullName()
   }
 
   quertyBuilder(page:string):any
@@ -37,7 +39,8 @@ export class QueryBuilderService {
       rubricIds: this.rubricIds,
       letter: this.letter,
       limit: this.limitVeterans.value,
-      page: this.paginateVeterans.value
+      page: this.paginateVeterans.value,
+      full_name: this.fullName
     }
   }
 

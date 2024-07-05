@@ -1,0 +1,23 @@
+<main>
+    <section class="content">
+        <form [formGroup]="authForm" action="" class="login-form">
+            <div class="login-form-title" (click)="clickTest()">Авторизация</div>
+            <div class="input-wrapper">
+                <input placeholder="Имя пользователя" formControlName="name" type="text" class="input">
+                <div class="icon-input">
+                    <img class="icon-input-img" src="assets/icons/user.svg" alt="">
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <input placeholder="Пароль" formControlName="password" type="password" class="input">
+                <div class="icon-input">
+                    <img class="icon-input-img" src="assets/icons/lock.svg" alt="">
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <div (click)="login()" class="login-button">Войти</div>
+            </div>
+         
+        </form>
+    </section>
+</main>

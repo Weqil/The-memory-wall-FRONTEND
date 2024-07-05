@@ -8,7 +8,7 @@ export class FilterService {
 
   constructor() { }
   public letter: BehaviorSubject<string> = new BehaviorSubject('')
-
+  public fullName: BehaviorSubject<string> = new BehaviorSubject('')
   public rubricIds: BehaviorSubject<string> = new BehaviorSubject(this.getRubricIds() || '')
 
   public changeFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
@@ -36,6 +36,13 @@ export class FilterService {
 
   setLetter(word: string):void {
     this.letter.next(word);
+  }
+
+  setFullName(name:string):void {
+    this.fullName.next(name);
+  }
+  getFullName():string{
+    return this.fullName.getValue();
   }
   
 }
