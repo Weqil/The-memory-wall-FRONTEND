@@ -1,1 +1,18 @@
-<p>drag-and-drop works!</p>
+<div class="wrapper">
+    <div class="file-container" #inputWrapper >
+        <div class="drag-icon-wrapper">
+            <img src="assets/icons/cloud.svg" alt="" class="drag-icon">
+        </div>
+        <input (dragenter)="dragenterFile(inputWrapper)" (drop)="dragenterFileLeave(inputWrapper)" (dragleave)="dragenterFileLeave(inputWrapper)" type="file" class="file" multiple (change)="getFile($event)">
+    </div>
+    <div class="file-grid">
+        <ng-container *ngFor="let file of files; let i = index">
+            <div class="file-wrapper">
+                <img class="file-icon" src="assets/icons/document.svg" alt="">
+                <div class="file-name">{{file.name}}</div>
+            </div>
+        </ng-container>
+    </div>
+   
+   
+</div>

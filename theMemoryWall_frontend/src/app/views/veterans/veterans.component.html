@@ -1,5 +1,6 @@
 
 <main>
+
     <div routerLink="/home" class="back-button">
         <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
     </div>
@@ -26,7 +27,7 @@
                     <div class="input-wrapper">
                         <input (input)="onInputChange($event)" class="input" value={{value}}/>
                         <div>   
-                            <button (click)="getVeteransByRubricId()" class="search-button">Найти</button>
+                            <button (click)="searchVeteranName()" class="search-button">Найти</button>
                         </div>
                    
                     </div>

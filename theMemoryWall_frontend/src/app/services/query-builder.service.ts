@@ -14,6 +14,7 @@ export class QueryBuilderService {
   public fullName:string = ''
   public paginateVeterans:BehaviorSubject<string> = new BehaviorSubject<string>('')
   public limitVeterans:BehaviorSubject<number> = new BehaviorSubject<number>(10)
+  public paginateVeteransValue:boolean = true
 
   constructor(private filterService:FilterService) { }
 
@@ -44,7 +45,19 @@ export class QueryBuilderService {
     }
   }
 
-  setPaginateVeterans(page:string):void{
-    this.paginateVeterans.next(page)
+  setPaginateVeterans(page:string|null):void{
+    if(page){
+      this.paginateVeterans.next(page)
+    }else{
+      this.paginateVeterans.next('')
+    }
   }
+  getPaginateVeterans():string{
+    return this.paginateVeterans.value
+  }
+
+  setPaginateVeteransValue(value:boolean){
+    this.paginateVeteransValue = value
+  }
+
 }

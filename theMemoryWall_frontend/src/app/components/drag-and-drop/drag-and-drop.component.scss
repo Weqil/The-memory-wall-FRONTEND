@@ -1,0 +1,84 @@
+.file-container{
+    border: 4px dotted rgb(85, 84, 84);
+    border-radius: 1rem;
+    height: 6rem;
+    margin: auto;
+    min-width: clamp(20rem, 12.727rem + 36.36vw, 40rem);
+    background: #242424;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.file-container:hover{
+    border: 4px dotted rgb(85, 84, 84);
+    border-radius: 1rem;
+    cursor: pointer;
+    height: 6rem;
+    margin: auto;
+    min-width: clamp(20rem, 12.727rem + 36.36vw, 40rem);
+    background: #777777;
+    transition: 0.3s;
+}
+.file{
+    cursor: pointer;
+    margin-top: -5rem;
+    position: absolute;
+    z-index: 100;
+    min-width: clamp(20rem, 12.727rem + 36.36vw, 40rem);
+    opacity: 0;
+    height: 6rem;
+}
+
+.drag-icon-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.drag-icon{
+    z-index: 1;
+    max-height: 4rem;
+    margin-top: 1rem;
+}
+.file-icon{
+    max-height: 2rem;
+}
+.file-wrapper{
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    background: #242424;
+    transition: 0.3s;
+    max-width: auto;
+   
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+   
+}
+.file-wrapper:hover{
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    background: #777777;
+    transition: 0.3s;
+    max-width: auto;
+   
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+.file-name{
+  margin-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-family: 'gotham-medium';
+}
+.file-grid{
+ 
+    
+}
