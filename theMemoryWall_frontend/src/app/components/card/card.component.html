@@ -1,4 +1,4 @@
-<div routerLink="/veteran/{{veteran.first_name}}" class="card">
+<div (click)="canceledRequest()" class="card">
     <ng-container *ngIf="veteran.photos.length > 0;">
         <ng-container *ngIf="!veteran.photos[0].local">
             <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
@@ -9,19 +9,40 @@
         </ng-container>
     
         <div class="card-footer">
-         {{veteran.first_name}} {{veteran.last_name}}
-         <div>
-            {{veteran.birthday}} - {{veteran.deathday}}
-         </div>
-        </div>
+            <div class="card-footer-last-name">
+                {{veteran.last_name}}
+            </div>
+            <div class="card-footer-name">
+                {{veteran.first_name}}   
+                <div>
+                    {{veteran.middle_name}}
+                </div>
+            </div>
+            <div class="card-footer-date">
+                {{veteran.birthday.split('-')[0]}} - {{veteran.deathday.split('-')[0]}}
+             </div>
+             <!-- <div>
+                {{veteran.birthday}} - {{veteran.deathday}}
+             </div> -->
+            </div>
     </ng-container >
 
     <ng-container *ngIf="veteran.photos.length == 0">
         <div style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
         <div class="card-footer">
-         {{veteran.first_name}} {{veteran.last_name}}
-         <div>
-            {{veteran.birthday}} - {{veteran.deathday}}
+        <div class="card-footer-last-name">
+            {{veteran.last_name}}
+        </div>
+        <div class="card-footer-name">
+            {{veteran.first_name}}
+            <div>
+                {{veteran.middle_name}}
+            </div>
+           
+        </div>
+         
+         <div class="card-footer-date">
+            {{veteran.birthday.split('-')[0]}} - {{veteran.deathday.split('-')[0]}}
          </div>
         </div>
     </ng-container >

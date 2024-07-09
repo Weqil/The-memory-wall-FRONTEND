@@ -1,10 +1,8 @@
-<div routerLink="/home" class="back-button">
+<div routerLink="/veterans/2" class="back-button">
     <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
 </div>
 <div class="pdf-wrapper">
-    <pdf-viewer src="/assets/documents/{{ url}}" 
-              [render-text]="true"
-              [original-size]="false"
-              style=" height: 100vh"
-    ></pdf-viewer>
+
 </div>
+
+<router-outlet name='secondRouter'></router-outlet>

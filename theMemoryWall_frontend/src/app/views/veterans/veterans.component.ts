@@ -11,6 +11,7 @@ import { LetterComponent } from '../../components/letter/letter.component';
 import { QueryBuilderService } from '../../services/query-builder.service';
 import { FilterService } from '../../services/filter.service';
 import { ScrollService } from '../../services/scroll.service';
+import { RouterOutlet } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-veterans',
@@ -18,6 +19,7 @@ import { DOCUMENT } from '@angular/common';
   imports: [
     RouterModule,
     RouterLink,
+    RouterOutlet,
     CommonModule,
     CardGridComponent,
     LetterComponent,
@@ -50,9 +52,10 @@ export class VeteransComponent  implements OnInit {
     public veteransShowUrl:string = this.route.snapshot.params['id']
     public greekLayout:any = {
       'default': [
-        'й ц у к е н г ш щ з х ъ {bksp}',
-        'ф ы в а п р о л д ж э',
+        'й ц у к е н г ш щ',
+        'ф ы в а п р о л д',
         'я ч с м и т ь б ю',
+        'з х ъ ж э ё {bksp}',
         '{space}'
       ],
       'shift': [
@@ -135,7 +138,7 @@ export class VeteransComponent  implements OnInit {
         this.filterService.setRubricIds(this.veteransShowUrl)
         this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
           this.veteranArray = res.heroes.data;
-          // this.wait = !this.wait
+          this.wait = !this.wait
           console.log(res.heroes.data)
         })
       }
@@ -173,6 +176,9 @@ export class VeteransComponent  implements OnInit {
 
     this.changeLetter()
    
+  }
+  ngOnDestroy(): void {
+    console.log("destroy")
   }
 
 }

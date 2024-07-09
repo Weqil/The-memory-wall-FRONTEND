@@ -11,7 +11,9 @@ export const routes: Routes = [
     {path:'veterans/:id', component: VeteransComponent},
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path:'memory', component: MemoryPeopleComponent},
-    {path:'veteran/:id', component: VeteranShowComponent},
+    {path:'veteran/:id', component: VeteranShowComponent, outlet: 'secondRouter'},
+    
+
     {path:'login', component: LoginComponent},
     {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

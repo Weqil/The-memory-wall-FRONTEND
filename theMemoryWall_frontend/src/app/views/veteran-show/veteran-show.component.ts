@@ -5,13 +5,14 @@ import { VeteransService } from '../../services/veterans.service';
 import { Route, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environments';
 import { ScrollService } from '../../services/scroll.service';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-veteran-show',
   standalone: true,
   imports: [
     PdfViewerModule,
     RouterLink,
-
+    RouterOutlet
   ],
   templateUrl: './veteran-show.component.html',
   styleUrl: './veteran-show.component.scss'

@@ -12,6 +12,7 @@ export class QueryBuilderService {
   public queryParams:IQuery = {};
   public letter:string = ''
   public fullName:string = ''
+  public wait: boolean = true;
   public paginateVeterans:BehaviorSubject<string> = new BehaviorSubject<string>('')
   public limitVeterans:BehaviorSubject<number> = new BehaviorSubject<number>(10)
   public paginateVeteransValue:boolean = true
@@ -41,7 +42,7 @@ export class QueryBuilderService {
       letter: this.letter,
       limit: this.limitVeterans.value,
       page: this.paginateVeterans.value,
-      full_name: this.fullName
+      fullName: this.fullName
     }
   }
 

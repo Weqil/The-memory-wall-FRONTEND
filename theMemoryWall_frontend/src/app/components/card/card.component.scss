@@ -1,145 +1,15 @@
-.search-button{
-    background-color: rgb(148, 5, 5);
-    width: 10.5vh;
-    height: 4.3vh;
-    color: #fff;
-    font-family: 'gotham-bold';
-    font-size: 1.5vh;
-    border-radius: 0.5vh;
-    margin-left: 1vh;
-    border: none;
-    margin-top: -1vh;
-}
-.input-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.back-button{
-    cursor: pointer;
-    width: 3vh;
-    height: 3vh;
-    border-radius: 50%;
-    background: #fff;
-    margin-left: 4vw;
-    margin-top: 2vh;
-    color: black;
-    justify-content: center;
-    font-family: 'gotham-bold';
-    display: flex;
-    align-items: center;
-    font-size: 2vh;
-    font-weight: 900;
-}
-.back-button-img{
-    width: 100%;
-    height: 100%;
-}
 
-.content{
-    padding-top: 2vh;
- 
-}
-.title{
-    color: #fff;
-    font-family: 'gotham-bold';
-    font-size: 3vh;
-    margin-bottom: 2rem;
-}
-.search-title{
-    margin-top: 4vh;
-    color: #fff;
-    font-family: 'gotham-bold';
-    font-size: 2vh;
-    margin-bottom: 2rem;
-}
-
-.input{
-    font-size: 2vh;
-    font-family: 'gotham-bold';
-    margin-top: 1vh;
-    border-radius: 0.5vh;
-    width: 100%;
-    line-height: normal;
-    color: black;
-    height: 4vh;
-    margin-bottom: 2vh;
-}
-.search{
-    max-width: 70%;
-    margin: auto;
-}
 @media (orientation:portrait) {
-    .search{
-        max-width: 90%;
-        margin: auto;
-    }
-    .letter-filter-item{ 
-        font-size: 1.5vh;
-        font-family: 'gotham-bold';
-        text-decoration: none;
-        list-style-type: none;
-        color: #fff;
-    }
-    .letter-filter{
-        text-align: start;
-        cursor: pointer;
-        margin-top: 2vh;
-        display: flex;
-        justify-content: center;
-        gap: 0.6vh;
-        padding-bottom: 0.5vh;
-        border-bottom: 0.2vh solid #fff;
-    }
     .card{
-        width: 28vw;
-        height: 26vh;
-        
+        min-width: 28vw;
+        min-height: 26vh;
         background-color: #fff;
      }
-     .card-grid{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill,28vw );
-        margin-top: 2vh;
-        grid-gap: 2vh 2vh;
-        align-items: center;
-        justify-content: center;
-    }
+
 }
 
 
 @media (orientation: landscape) {
-    .card-grid{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill,21vw );
-        margin-top: 2vh;
-        grid-gap: 2vh 0.4vh;
-        align-items: center;
-        justify-content: center;
-    }
-    .letter-filter-item{
-        font-size: 2vh;
-        font-family: 'gotham-bold';
-        text-decoration: none;
-        list-style-type: none;
-        color: #fff;
-    }
-    .letter-filter{
-        width: auto;
-        cursor: pointer;
-        margin-top: 2vh;
-        display: flex;
-        justify-content: center;
-        gap: 2vh;
-        padding-bottom: 0.5vh;
-        border-bottom: 0.2vh solid #fff;
-    }
-    .letter-filter-wrapper{
-        padding-left: 2vh;
-        padding-right: 2vw;
-    }
     .card{
         width: 20vw;
         height: 35vh;
@@ -154,13 +24,32 @@
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;
-    height: 75%;
+    height: 20vh;
 }
 .card-footer{
     font-family: 'gotham-bold';
     color: rgb(31, 31, 31);
     font-size: 1.5vh;
-    padding-top: 1vh;
+    padding-top: 0.5vh;
     text-align:start;
     padding-left: 1vh;
+}
+.card-footer-last-name{
+    font-family: 'gotham-bold';
+    color: rgb(0, 0, 0);
+    font-size: 1.6vh;
+    padding-top: 0.3vh;
+    text-align:start;
+  
+}
+.card-footer-name{
+    font-family: 'gotham-medium';
+    color: rgb(0, 0, 0);
+    font-size: 1.3vh;
+    padding-top: 0.3vh;
+    padding-bottom: 0.3vh;
+    text-align:start;
+}
+.card-footer-date{
+    padding-bottom: 0.5vh;
 }

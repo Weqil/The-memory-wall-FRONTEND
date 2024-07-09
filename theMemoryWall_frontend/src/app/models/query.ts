@@ -1,5 +1,5 @@
 export interface IQuery{
-    full_name?: string
+    fullName?: string
     rubricIds?: string
     letter?: string
     limit?: number
