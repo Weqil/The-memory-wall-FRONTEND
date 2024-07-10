@@ -37,7 +37,7 @@ export class VeteranShowComponent implements OnInit  {
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
 
-   public url:string = `assets/pdfs/`;
+   public url:string = `/assets/pdfs/`;
 
   ngOnInit(): void {
     this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
