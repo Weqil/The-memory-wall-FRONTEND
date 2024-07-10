@@ -5,7 +5,7 @@ import {provideHttpClient} from '@angular/common/http';
 import { IQuery } from '../models/query';
 @Injectable({
   providedIn: 'root'
-  
+
 })
 export class VeteransService {
 
@@ -13,12 +13,17 @@ export class VeteransService {
     private http: HttpClient,
 
   ) { }
+
+  getVeteranById(id: number) {
+    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero/${id}`);
+
+  }
   getVeterans(searchString: string) {
     console.log(searchString);
-    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero?full_name= ${searchString}`); 
+    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero?full_name= ${searchString}`);
   }
 
   getVeteransByRubricId(params: IQuery){
-    return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero`, { params: { ...params } }); 
+    return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero`, { params: { ...params } });
   }
 }

@@ -13,17 +13,17 @@ import { QueryBuilderService } from '../../services/query-builder.service';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-  constructor(   
+  constructor(
     private queryBuilderService: QueryBuilderService,
     private router: Router
   ){}
- 
+
 @Input() veteran!:IVeteran
 public host:string = environment.backHost
 public port:string = environment.backPort
 public protocol:string = environment.backProtocol
 canceledRequest(){
   console.log( this.queryBuilderService.wait)
-  this.router.navigate([`veteran/${this.veteran.id}`, { outlets: { secondRouter: ['veteranShow'] } }]);
+  this.router.navigate([`veteran/${this.veteran.id}`]);
 }
 }

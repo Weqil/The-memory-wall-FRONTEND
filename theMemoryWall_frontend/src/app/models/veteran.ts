@@ -12,4 +12,5 @@ export interface IVeteran {
     description:string;
     war_id:string;
     rubrics:IRubrics[];
+    file_name: string;
 }
