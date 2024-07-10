@@ -19,7 +19,21 @@
                 </div>
             </div>
             <div class="card-footer-date">
-                {{veteran.birthday.split('-')[0]}} - {{veteran.deathday.split('-')[0]}}
+                <div *ngIf="veteran.birthday; else noDateB">
+                    {{veteran.birthday.split('-')[0]}}
+                </div>
+                <ng-template #noDateB>
+                    нет данных
+                </ng-template>
+                <div>
+                    -
+                </div>
+                <div *ngIf="veteran.deathday; else noDateD">
+                    {{veteran.deathday.split('-')[0]}}
+                </div>
+                <ng-template #noDateD>
+                    нет данных
+                </ng-template>
              </div>
              <!-- <div>
                 {{veteran.birthday}} - {{veteran.deathday}}
@@ -41,8 +55,22 @@
            
         </div>
          
-         <div class="card-footer-date">
-            {{veteran.birthday.split('-')[0]}} - {{veteran.deathday.split('-')[0]}}
+        <div class="card-footer-date">
+            <div *ngIf="veteran.birthday; else noDateB">
+                {{veteran.birthday.split('-')[0]}}
+            </div>
+            <ng-template #noDateB>
+                нет данных
+            </ng-template>
+            <div>
+                -
+            </div>
+            <div *ngIf="veteran.deathday; else noDateD">
+                {{veteran.deathday.split('-')[0]}}
+            </div>
+            <ng-template #noDateD>
+                нет данных
+            </ng-template>
          </div>
         </div>
     </ng-container >

@@ -1,6 +1,6 @@
 export const environment = {
-    production: false,
-    backProtocol: 'http',
-    backHost: 'localhost',
-    backPort: '8000',
-  };
+  production: true,
+  backProtocol: 'https',
+  backHost: 'mlcity.ru',
+  backPort: '3443',
+};
