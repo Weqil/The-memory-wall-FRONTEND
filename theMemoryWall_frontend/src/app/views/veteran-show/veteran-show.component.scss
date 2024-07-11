@@ -4,3 +4,24 @@
     z-index: 100;
     border: 0.2vh solid rgb(59, 59, 59);
 }
+
+.pdf-wrapper {
+  padding-top: 15vh;
+}
+
+
+@media(orientation: landscape) {
+  .pdf-wrapper-content{
+    width: 60%;
+  }
+  .pdf-wrapper {
+    padding-top: 10vh;
+  }
+
+}
+.pdf-wrapper-content{
+  width: 80%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -37,7 +37,7 @@ export class VeteranShowComponent implements OnInit  {
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
 
-   public url:string = `/assets/pdfs/`;
+   public url:string = `${this.protocol}://${this.host}:${this.port}/api/files/pdf`;
 
   ngOnInit(): void {
     this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
@@ -50,7 +50,7 @@ export class VeteranShowComponent implements OnInit  {
     .subscribe((response: any) => {
       if (response.heroes) {
         this.veteran = response.heroes
-        this.url = `${this.url}/${this.veteran.file_name}.pdf`
+        this.url = `${this.url}/${this.veteran.file_name}`
       } else {
         this.router.navigate([`home`]);
       }

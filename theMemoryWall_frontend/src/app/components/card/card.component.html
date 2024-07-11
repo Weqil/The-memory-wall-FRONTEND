@@ -3,22 +3,22 @@
         <ng-container *ngIf="!veteran.photos[0].local">
             <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
-    
+
         <ng-container *ngIf="veteran.photos[0].local">
             <div style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
-    
+
         <div class="card-footer">
             <div class="card-footer-last-name">
                 {{veteran.last_name}}
             </div>
             <div class="card-footer-name">
-                {{veteran.first_name}}   
+                {{veteran.first_name}}
                 <div>
                     {{veteran.middle_name}}
                 </div>
             </div>
-            <div class="card-footer-date">
+            <!-- <div class="card-footer-date">
                 <div *ngIf="veteran.birthday; else noDateB">
                     {{veteran.birthday.split('-')[0]}}
                 </div>
@@ -34,7 +34,7 @@
                 <ng-template #noDateD>
                     нет данных
                 </ng-template>
-             </div>
+             </div> -->
              <!-- <div>
                 {{veteran.birthday}} - {{veteran.deathday}}
              </div> -->
@@ -52,10 +52,10 @@
             <div>
                 {{veteran.middle_name}}
             </div>
-           
+
         </div>
-         
-        <div class="card-footer-date">
+
+        <!-- <div class="card-footer-date">
             <div *ngIf="veteran.birthday; else noDateB">
                 {{veteran.birthday.split('-')[0]}}
             </div>
@@ -71,8 +71,8 @@
             <ng-template #noDateD>
                 нет данных
             </ng-template>
-         </div>
+         </div> -->
         </div>
     </ng-container >
-    
+
 </div>
