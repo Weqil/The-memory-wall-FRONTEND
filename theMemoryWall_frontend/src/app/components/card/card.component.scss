@@ -2,7 +2,7 @@
 @media (orientation:portrait) {
     .card{
         min-width: 28vw;
-        min-height: 26vh;
+        height: 26vh;
         background-color: #fff;
      }
      .card-header{
@@ -28,10 +28,13 @@
 
 .card-header{
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    height: 100%;
+    background-position: center;
     width: 100%;
 }
 .card-footer{
+    background-color: #fff;
     font-family: 'gotham-bold';
     color: rgb(31, 31, 31);
     font-size: 1.5vh;

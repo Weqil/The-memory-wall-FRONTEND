@@ -148,6 +148,7 @@ export class VeteransComponent  implements OnInit {
   }
 
   requestTemplate(){
+
    this.queryBuilderService.setPaginateVeteransValue(true)
    this.queryBuilderService.setPaginateVeterans('')
     this.veteranArray.length = 0
@@ -178,6 +179,11 @@ export class VeteransComponent  implements OnInit {
    
   }
   ngOnDestroy(): void {
+    this.filterService.setFullName('')
+    this.filterService.setLetter('')
+    this.queryBuilderService.setPaginateVeteransValue(true)
+    this.queryBuilderService.setPaginateVeterans('')
+     this.veteranArray.length = 0
     console.log("destroy")
   }
 
