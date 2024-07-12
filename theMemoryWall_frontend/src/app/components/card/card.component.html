@@ -44,10 +44,11 @@
     <ng-container *ngIf="veteran.photos.length == 0">
         <div style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
         <div class="card-footer">
-        <div class="card-footer-last-name">
-            {{veteran.last_name}}
-        </div>
-        <div class="card-footer-name">
+            <div class="card-footer-last-name">
+                {{veteran.last_name}}
+            </div>
+            
+            <div class="card-footer-name">
             {{veteran.first_name}}
             <div>
                 {{veteran.middle_name}}
