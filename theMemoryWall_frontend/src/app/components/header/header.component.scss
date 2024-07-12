@@ -3,6 +3,8 @@ header{
     padding-top: 1vh;
     width: 100%;
     height: 7%;
+    position: absolute;
+    z-index: 100;
     display: flex;
     background-color: #F5F4F3;
 }
