@@ -48,11 +48,12 @@ export class VeteranShowComponent implements OnInit  {
       })
     )
     .subscribe((response: any) => {
-      if (response.heroes) {
-        this.veteran = response.heroes
+      console.log(response)
+      if (response.hero) {
+        this.veteran = response.hero
         this.url = `${this.url}/${this.veteran.file_name}`
       } else {
-        this.router.navigate([`home`]);
+        console.log(response)
       }
     })
   }

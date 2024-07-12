@@ -23,7 +23,6 @@ public host:string = environment.backHost
 public port:string = environment.backPort
 public protocol:string = environment.backProtocol
 canceledRequest(){
-  console.log( this.queryBuilderService.wait)
   this.router.navigate([`veteran/${this.veteran.id}`]);
 }
 }
