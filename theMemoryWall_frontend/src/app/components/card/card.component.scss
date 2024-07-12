@@ -2,18 +2,30 @@
 @media (orientation:portrait) {
     .card{
         min-width: 28vw;
+        cursor: pointer;
         height: 26vh;
+        position: relative;
+        overflow: none;
         background-color: #fff;
      }
      .card-header{
       height: 25vh;
   }
-
+    .card-header{
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 80%;
+        background-position: top;
+        width: 100%;
+    }
 }
 
 
 @media (orientation: landscape) {
     .card{
+        cursor: pointer;
+        position: relative;
+        overflow: none;
         width: 20vw;
         height: 52vh;
         background-color: #fff;
@@ -21,18 +33,23 @@
      .card-header{
       height: 40vh;
   }
-}
-
-
-
-
-.card-header{
+  .card-footer-name{
+    display: flex;
+    gap: 0.4vh;
+  }
+  .card-header{
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
-    background-position: center;
+    height: 90%;
+    background-position: top;
     width: 100%;
 }
+}
+
+
+
+
+
 .card-footer{
     background-color: #fff;
     font-family: 'gotham-bold';

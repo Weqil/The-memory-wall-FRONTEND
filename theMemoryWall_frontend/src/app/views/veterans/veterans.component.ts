@@ -13,6 +13,7 @@ import { FilterService } from '../../services/filter.service';
 import { ScrollService } from '../../services/scroll.service';
 import { RouterOutlet } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { IRubrics } from '../../models/rubrics';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -47,6 +48,7 @@ export class VeteransComponent  implements OnInit {
     public letterArray: string[] = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Э Ю Я'.split(' ');
     public waitRequest: boolean = false;
     public keyboard: any;
+    public rubric!:IRubrics
     public wait: boolean = true;
     public value = "";
     public veteransShowUrl:string = this.route.snapshot.params['id']
@@ -123,6 +125,8 @@ export class VeteransComponent  implements OnInit {
         //Добавил проверку для того что бы не было багов с пустым локал сторедж
           this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
           this.veteranArray = this.veteranArray.concat(res.heroes.data);
+          this.rubric = res.heroes.data[0].rubrics[0]
+          console.log(this.rubric)
           console.log(res.heroes)
           this.wait = !this.wait
           if(res.heroes.next_cursor){
@@ -138,6 +142,8 @@ export class VeteransComponent  implements OnInit {
         this.filterService.setRubricIds(this.veteransShowUrl)
         this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
           this.veteranArray = res.heroes.data;
+          this.rubric = res.heroes.data[0].rubrics[0]
+          console.log(this.rubric)
           this.wait = !this.wait
           console.log(res.heroes.data)
         })

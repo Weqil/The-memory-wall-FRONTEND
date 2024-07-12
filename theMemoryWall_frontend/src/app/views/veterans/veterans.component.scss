@@ -53,10 +53,7 @@
     height: 100%;
 }
 
-.content{
-    padding-top: 2vh;
- 
-}
+
 .title{
     color: #fff;
     font-family: 'gotham-bold';
@@ -64,11 +61,11 @@
     margin-bottom: 2rem;
 }
 .search-title{
-    margin-top: 4vh;
+    margin-top: 2vh;
     color: #fff;
     font-family: 'gotham-bold';
     font-size: 2vh;
-    margin-bottom: 2rem;
+
 }
 
 .input{
@@ -121,10 +118,30 @@
         align-items: center;
         justify-content: center;
     }
+    .rubric-name{
+        padding-top: 1em;
+        color: #fff;
+        font-family: 'gotham-bold';
+        text-transform: uppercase;
+        font-size: 3.2em;
+        width: 90%;
+        padding-left: 2vh;
+    
+    }
 }
 
 
 @media (orientation: landscape) {
+    .rubric-name{
+        padding-top: 1em;
+        color: #fff;
+        font-family: 'gotham-bold';
+        text-transform: uppercase;
+        font-size: 2.2em;
+        width: 70%;
+        margin: auto;
+    
+    }
     .card-grid{
         width: 100%;
         display: grid;

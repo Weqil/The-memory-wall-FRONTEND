@@ -5,7 +5,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 28vw );
         margin-top: 2vh;
-        grid-gap: 2vh 2vh;
+        grid-gap: 6vh 2vh;
         justify-content: center;
     }
 }
@@ -17,7 +17,7 @@
         display: grid;
         grid-template-columns: repeat(3, 21vw );
         margin-top: 2vh;
-        grid-gap: 2vh 0.4vh;
+        grid-gap: 10vh 0.4vh;
         align-items: center;
         justify-content: center;
     }

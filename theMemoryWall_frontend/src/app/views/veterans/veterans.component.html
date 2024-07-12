@@ -1,25 +1,22 @@
 
 <main>
 
-    <div routerLink="/home" class="back-button">
-        <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
-    </div>
+   <div>
+
+   </div>
     <section class="content">
-       
+        <div routerLink="/home" class="back-button">
+            <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
+        </div>
+        <ng-container *ngIf="rubric">
+            <div class="rubric-name">
+                <span>{{rubric.subtitle}}</span>
+            </div>
+        </ng-container>
+      
        <div>
             <div class="search">
                 <div>
-                    <ng-container *ngIf="veteransShowUrl ==='/veterans/wow'">
-                        <div class="title">
-                            ВЕТЕРАНЫ ВОВ ГОРОДА ЗАРЕЧНЫЙ
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="veteransShowUrl ==='/veterans/polk'">
-                        <div class="title">
-                            БЕСМЕРТНЫЙ ПОЛК
-                        </div>
-                    </ng-container>
-                   
                     <div class="search-title">
                         Поиск человека
                     </div>

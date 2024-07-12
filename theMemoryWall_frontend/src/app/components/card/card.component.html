@@ -1,4 +1,6 @@
 <div (click)="canceledRequest()" class="card">
+ 
+ 
     <ng-container *ngIf="veteran.photos.length > 0;">
         <ng-container *ngIf="!veteran.photos[0].local">
             <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
@@ -8,41 +10,15 @@
             <div style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
 
-        <div class="card-footer">
-            <div class="card-footer-last-name">
-                {{veteran.last_name}}
-            </div>
-            <div class="card-footer-name">
-                {{veteran.first_name}}
-                <div>
-                    {{veteran.middle_name}}
-                </div>
-            </div>
-            <!-- <div class="card-footer-date">
-                <div *ngIf="veteran.birthday; else noDateB">
-                    {{veteran.birthday.split('-')[0]}}
-                </div>
-                <ng-template #noDateB>
-                    нет данных
-                </ng-template>
-                <div>
-                    -
-                </div>
-                <div *ngIf="veteran.deathday; else noDateD">
-                    {{veteran.deathday.split('-')[0]}}
-                </div>
-                <ng-template #noDateD>
-                    нет данных
-                </ng-template>
-             </div> -->
-             <!-- <div>
-                {{veteran.birthday}} - {{veteran.deathday}}
-             </div> -->
-            </div>
+        
     </ng-container >
 
     <ng-container *ngIf="veteran.photos.length == 0">
         <div style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
+      
+    </ng-container >
+
+    <div>
         <div class="card-footer">
             <div class="card-footer-last-name">
                 {{veteran.last_name}}
@@ -53,27 +29,9 @@
             <div>
                 {{veteran.middle_name}}
             </div>
-
+    
+            </div>
+    
         </div>
-
-        <!-- <div class="card-footer-date">
-            <div *ngIf="veteran.birthday; else noDateB">
-                {{veteran.birthday.split('-')[0]}}
-            </div>
-            <ng-template #noDateB>
-                нет данных
-            </ng-template>
-            <div>
-                -
-            </div>
-            <div *ngIf="veteran.deathday; else noDateD">
-                {{veteran.deathday.split('-')[0]}}
-            </div>
-            <ng-template #noDateD>
-                нет данных
-            </ng-template>
-         </div> -->
-        </div>
-    </ng-container >
-
+    </div>
 </div>
