@@ -1,12 +1,14 @@
 <main>
+    <div class="wrapper-background"></div>
     <div>
         <div class="video-wrapper">
             <video class="video"  src="./assets/videos/fire.mp4"  loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"></video>
         </div>
     </div>
-   
+
+   <div style="z-index: 20; position: relative;">
     <div class="button-grid">
-        <!-- <div routerLink="/veterans/wow" class="button-wrapper">
+        <div routerLink="/veterans/wow" class="button-wrapper">
             <div style="background-image: url('assets/imgs/wow.jpg');" class="button-grid-item"></div>
             <div class="button-grid-item_text">ВЕТЕРАНЫ ВОВ ЗАРЕЧНОГО</div>
         </div>
@@ -19,9 +21,11 @@
         <div routerLink="/memory" class="button-wrapper">
             <div style="background-image: url('assets/imgs/pamyat.jpg');" class="button-grid-item"></div>
             <div class="button-grid-item_text">ПАМЯТЬ НАРОДА</div>
-        </div> -->
+        </div>
         <ng-container *ngFor="let rubric of rubrics">
             <app-main-button [rubric]="rubric"></app-main-button>
         </ng-container>
     </div>
+   </div>
+    
 </main>
