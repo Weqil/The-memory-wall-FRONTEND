@@ -15,20 +15,15 @@
        <div>
             <div class="search">
                 <div>
-                    <div class="search-title">
-                        Поиск человека
-                    </div>
-
                     <form [formGroup]="formSearch" class="input-wrapper">
-                            <input formControlName="name" (input)="onInputChange($event)" class="input" value={{value}}/>
+                            <input placeholder="поиск по фамиилии" formControlName="name" (input)="onInputChange($event)" class="input" value={{value}}/>
                         <div>   
                             <button type="submit" (click)="searchVeteranName()" class="search-button">Найти</button>
                         </div>
-                   
                     </form>
                     
                     <div>
-                        <div style="" class="simple-keyboard"></div>
+                        <div class="simple-keyboard"></div>
                     </div> 
                 </div>
                 
