@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes, RouterModule,RouterLink } from '@angular/router';
+import { Routes, RouterModule,RouterLink, Router } from '@angular/router';
 import { RubricService } from '../../services/rubric.service';
 import { QueryBuilderService } from '../../services/query-builder.service';
 import { FilterService } from '../../services/filter.service';
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     private rubricService: RubricService,
     private queryBuilderService: QueryBuilderService,
     private filterService: FilterService,
+    private router: Router
   ){
 
   }
@@ -36,6 +37,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRubric()
-   
+    
   }
 }
