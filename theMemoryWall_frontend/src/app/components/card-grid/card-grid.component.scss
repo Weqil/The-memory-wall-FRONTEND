@@ -5,7 +5,10 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 28vw );
         margin-top: 2vh;
-        grid-gap: 6vh 2vh;
+        grid-gap: 7vh 2vh;
+        max-height: 60%;
+        overflow-y: auto;
+        height: 45vh;
         justify-content: center;
     }
 }

@@ -39,14 +39,9 @@ body,html{
 
 
 .simple-keyboard.hg-theme-default {
-    border-radius: 10px;
-    margin: 10px;
-    width: calc(100% - 20px);
-    display: block;
-    grid: none;
-  }
+  
   .hg-theme-default .hg-row {
-    display: flex;
+    display: flex;}
 }
 
 .hg-button.hg-functionBtn.hg-button-space{
@@ -54,11 +49,16 @@ body,html{
 }
 
 .hg-theme-default .hg-button {
-    height: 4vh;
- 
+    height: 3vh;
     font-family: 'gotham-medium';
-    font-size: 1.5vh;
+    font-size: 1.3vh;
 }
 .content{
     padding-top: 5vh;
+}
+.simple-keyboard.hg-theme-default {
+    border-radius: 10px;
+    width: calc(100% - 20px);
+    display: block;
+    grid: none;
 }

@@ -69,10 +69,9 @@ export class VeteransComponent  implements OnInit {
       this.keyboard.setOptions({
         layout: {
           default: [
-            'й ц у к е н г ш щ {bksp}',
-            'ф ы в а п р о л д',
+            'ё й ц у к е н г ш щ з х ъ {bksp}',
+            'ф ы в а п р о л д ж э',
             'я ч с м и т ь б ю',
-            'з х ъ ж э ё',
             '{space}'
           ],
         },

@@ -31,6 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0.5vh;
 }
 .back-button{
     cursor: pointer;
@@ -70,7 +71,7 @@
 
 .input{
     font-size: 2vh;
-    font-family: 'gotham-bold';
+    font-family: 'gotham-medium';
     margin-top: 1vh;
     border-radius: 0.3vh;
     width: 100%;
@@ -120,7 +121,7 @@
         justify-content: center;
     }
     .rubric-name{
-        padding-top: 1.3em;
+        padding-top: 1.8em;
         color: #fff;
         font-family: 'gotham-bold';
         text-transform: uppercase;
