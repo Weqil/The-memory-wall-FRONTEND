@@ -11,9 +11,7 @@ export class FilterService {
   public fullName: BehaviorSubject<string> = new BehaviorSubject('')
   public rubricIds: BehaviorSubject<string> = new BehaviorSubject(this.getRubricIds() || '')
 
-  public changeFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false,
-  )
+  public changeFilter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   getRubricIds() {
       return localStorage.getItem('rubric') || '';

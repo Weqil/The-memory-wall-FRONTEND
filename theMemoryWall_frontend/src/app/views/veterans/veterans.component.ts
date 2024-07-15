@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Inject, OnInit,ViewChild,inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, Inject, OnInit,ViewChild,inject } from '@angular/core';
 import { Routes, RouterModule,RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Keyboard from "simple-keyboard";
@@ -14,6 +14,9 @@ import { ScrollService } from '../../services/scroll.service';
 import { RouterOutlet } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { IRubrics } from '../../models/rubrics';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RubricService } from '../../services/rubric.service';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -24,7 +27,7 @@ import { IRubrics } from '../../models/rubrics';
     CommonModule,
     CardGridComponent,
     LetterComponent,
-   
+    ReactiveFormsModule
     
   ],
   providers: [VeteransService],
@@ -34,12 +37,15 @@ import { IRubrics } from '../../models/rubrics';
 
 
 export class VeteransComponent  implements OnInit {
+  private readonly destroy$ = new Subject<void>()
     constructor(
+      private cdr: ChangeDetectorRef,
       @Inject(DOCUMENT) private document: Document,
       private scrollService:ScrollService,
       private route:ActivatedRoute,
       private queryBuilderService: QueryBuilderService,
-      private filterService: FilterService
+      private filterService: FilterService,
+      private rubricService: RubricService
     ){}
     
     @ViewChild('test') test!:ElementRef
@@ -52,28 +58,8 @@ export class VeteransComponent  implements OnInit {
     public wait: boolean = true;
     public value = "";
     public veteransShowUrl:string = this.route.snapshot.params['id']
-    public greekLayout:any = {
-      'default': [
-        'й ц у к е н г ш щ',
-        'ф ы в а п р о л д',
-        'я ч с м и т ь б ю',
-        'з х ъ ж э ё {bksp}',
-        '{space}'
-      ],
-      'shift': [
-        '~ ! @ # $ % ^ & * ( ) _ + {bksp}',
-        '{tab} Й Ц У К Е Н Г Ш Щ З Х Ъ /',
-        '{lock} Ф Ы В А П Р О Л Д Ж Э {enter}',
-        '{shift} Я Ч С М И Т Ь Б Ю , {shift}',
-        '.com @ {space}'
-      ],
-      buttonTheme: [
-        {
-          class: "keybord-button",
-          buttons: "А Б В Г Д Е Ё Ж "
-        }
-      ]
-    }
+    public greekLayout:any = {}
+    public formSearch!: FormGroup
     
     ngAfterViewInit() {
       this.keyboard = new Keyboard({
@@ -81,12 +67,38 @@ export class VeteransComponent  implements OnInit {
         onKeyPress: button => this.onKeyPress(button)
       })
       this.keyboard.setOptions({
-        layout: this.greekLayout
+        layout: {
+          default: [
+            'й ц у к е н г ш щ {bksp}',
+            'ф ы в а п р о л д',
+            'я ч с м и т ь б ю',
+            'з х ъ ж э ё',
+            '{space}'
+          ],
+        },
+        display: {
+          "{alt}": ".?123",
+          "{smileys}": "\uD83D\uDE03",
+          "{shift}": "⇧",
+          "{shiftactivated}": "⇧",
+          "{enter}": "return",
+          "{bksp}": "⌫",
+          "{altright}": ".?123",
+          "{downkeyboard}": "🞃",
+          "{space}": " ",
+          "{default}": "ABC",
+        }
       })
     
     }
 
     onInputChange = (event: any) => {
+      if(this.formSearch.value.name == '') {
+        this.filterService.setFullName('')
+        this.requestTemplate()
+        this.getVeteransByRubricId()
+      }
+      this.value = this.formSearch.value.name
       this.keyboard.setInput(event.target.value);
     };
 
@@ -104,48 +116,30 @@ export class VeteransComponent  implements OnInit {
     
     };
 
-
-  getVeterans(param:string):void{
-    this.veteransService.getVeterans(this.value).pipe().subscribe((res:any)=>{
-      this.veteranArray = res.heroes;
-    })
-    //получаю ветеранов
-  }
-
   searchVeteranName(){
+    this.filterService.setFullName(this.value)
     this.requestTemplate()
     this.getVeteransByRubricId()
     // делаю запрос с новым фильтром задаю его в функции для ввода имени с клавиатуры
   }
 
   getVeteransByRubricId(){
-    if (this.wait && this.queryBuilderService.paginateVeteransValue) {
+    if (this.wait) {
       if(localStorage.getItem('rubric')){
         this.wait = false
         //Добавил проверку для того что бы не было багов с пустым локал сторедж
-          this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
-          this.veteranArray = this.veteranArray.concat(res.heroes.data);
-          this.rubric = res.heroes.data[0].rubrics[0]
-          console.log(this.rubric)
-          console.log(res.heroes)
+          this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
+          this.veteranArray.push(...res.heroes.data);
           this.wait = !this.wait
-          if(res.heroes.next_cursor){
-            this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
-          }else{
-            this.queryBuilderService.setPaginateVeteransValue(false)
-            
-          }
-          
+          this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
         })
       } else{
         this.wait = false
         this.filterService.setRubricIds(this.veteransShowUrl)
         this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
-          this.veteranArray = res.heroes.data;
-          this.rubric = res.heroes.data[0].rubrics[0]
-          console.log(this.rubric)
+          this.veteranArray.push(...res.heroes.data);
           this.wait = !this.wait
-          console.log(res.heroes.data)
+          this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
         })
       }
     }
@@ -154,7 +148,6 @@ export class VeteransComponent  implements OnInit {
   }
 
   requestTemplate(){
-
    this.queryBuilderService.setPaginateVeteransValue(true)
    this.queryBuilderService.setPaginateVeterans('')
     this.veteranArray.length = 0
@@ -162,26 +155,46 @@ export class VeteransComponent  implements OnInit {
     // обнуляем массив для нового заполнения и подключаем новое отслежевание пагинации
   }
 
-  changeLetter(){
-    this.filterService.changeFilter.pipe().subscribe((event)=>{
-      this.requestTemplate()
-      this.queryBuilderService.setPaginateVeterans(null)
-      this.getVeteransByRubricId()
-    })
+  changeLetter(event: Event){
+  this.veteranArray.length = 0
+  this.queryBuilderService.setPaginateVeterans('')
+  this.filterService.setFullName('')
+  this.value = ''
+  this.formSearch.patchValue({
+    name: ''
+  });
+  this.keyboard.setInput('');
+  this.filterService.setLetter(String(event));
+  this.filterService.changeFilter.next(true)
+
   }
   
   paginateSubmit(){
     this.scrollService.setCheckScrollEdge(()=>{
-      this.getVeteransByRubricId()
-    }) 
-    // при каждом окончании страницы делаем запрос на новую пагинцаию с текущими фильтрами 
+      if(this.queryBuilderService.paginateVeterans.value){
+        this.filterService.changeFilter.next(true)
+      }
+    })   
   }
 
+  getRubric(){
+    this.rubricService.getRubricById(this.veteransShowUrl).pipe().subscribe((res:any)=>{
+    this.rubric = res.rubric
+    })
+  }
   ngOnInit(): void {
+    this.getRubric()
     this.scrollService.scrollStart()
     this.paginateSubmit()
 
-    this.changeLetter()
+    // console.log(this.veteranArray)
+    this.formSearch = new FormGroup({
+      name:new FormControl('')
+    })
+    this.filterService.changeFilter.pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
+      this.getVeteransByRubricId()
+      // this.cdr.detectChanges()
+    })
    
   }
   ngOnDestroy(): void {
@@ -189,8 +202,10 @@ export class VeteransComponent  implements OnInit {
     this.filterService.setLetter('')
     this.queryBuilderService.setPaginateVeteransValue(true)
     this.queryBuilderService.setPaginateVeterans('')
-     this.veteranArray.length = 0
-    console.log("destroy")
+    this.veteranArray.length = 0
+    this.destroy$.next()
+    this.destroy$.complete()
+    this.scrollService.scrollEnd()
   }
 
 }

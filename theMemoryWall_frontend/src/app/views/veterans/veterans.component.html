@@ -5,9 +5,7 @@
 
    </div>
     <section class="content">
-        <div routerLink="/home" class="back-button">
-            <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
-        </div>
+      
         <ng-container *ngIf="rubric">
             <div class="rubric-name">
                 <span>{{rubric.subtitle}}</span>
@@ -21,13 +19,13 @@
                         Поиск человека
                     </div>
 
-                    <div class="input-wrapper">
-                        <input (input)="onInputChange($event)" class="input" value={{value}}/>
+                    <form [formGroup]="formSearch" class="input-wrapper">
+                            <input formControlName="name" (input)="onInputChange($event)" class="input" value={{value}}/>
                         <div>   
-                            <button (click)="searchVeteranName()" class="search-button">Найти</button>
+                            <button type="submit" (click)="searchVeteranName()" class="search-button">Найти</button>
                         </div>
                    
-                    </div>
+                    </form>
                     
                     <div>
                         <div style="" class="simple-keyboard"></div>
@@ -41,7 +39,7 @@
         <div class="letter-filter-wrapper">
             <div class="letter-filter">
                 <ng-container *ngFor="let letter of letterArray">
-                    <app-letter [letter]="letter"></app-letter>
+                    <app-letter [letter]="letter" (letterChanged)="changeLetter($event)"></app-letter>
                 </ng-container>
             </div>
         </div>
