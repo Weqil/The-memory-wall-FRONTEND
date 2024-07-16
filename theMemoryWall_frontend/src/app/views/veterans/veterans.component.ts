@@ -28,7 +28,7 @@ import { Subject, takeUntil } from 'rxjs';
     CardGridComponent,
     LetterComponent,
     ReactiveFormsModule
-    
+
   ],
   providers: [VeteransService],
   templateUrl: './veterans.component.html',
@@ -47,7 +47,7 @@ export class VeteransComponent  implements OnInit {
       private filterService: FilterService,
       private rubricService: RubricService
     ){}
-    
+
     @ViewChild('test') test!:ElementRef
     public veteransService:VeteransService = inject(VeteransService);
     public veteranArray:IVeteran[] = [];
@@ -60,7 +60,7 @@ export class VeteransComponent  implements OnInit {
     public veteransShowUrl:string = this.route.snapshot.params['id']
     public greekLayout:any = {}
     public formSearch!: FormGroup
-    
+
     ngAfterViewInit() {
       this.keyboard = new Keyboard({
         onChange: input => this.onChange(input),
@@ -88,7 +88,7 @@ export class VeteransComponent  implements OnInit {
           "{default}": "ABC",
         }
       })
-    
+
     }
 
     onInputChange = (event: any) => {
@@ -108,15 +108,16 @@ export class VeteransComponent  implements OnInit {
         this.requestTemplate()
         this.getVeteransByRubricId()
       }
-  
+
     };
 
     onKeyPress = (button: string) => {
-    
+
     };
 
   searchVeteranName(){
     this.filterService.setFullName(this.value)
+    this.filterService.setLetter('')
     this.requestTemplate()
     this.getVeteransByRubricId()
     // делаю запрос с новым фильтром задаю его в функции для ввода имени с клавиатуры
@@ -142,8 +143,8 @@ export class VeteransComponent  implements OnInit {
         })
       }
     }
-    
-  
+
+
   }
 
   requestTemplate(){
@@ -167,13 +168,13 @@ export class VeteransComponent  implements OnInit {
   this.filterService.changeFilter.next(true)
 
   }
-  
+
   paginateSubmit(){
     this.scrollService.setCheckScrollEdge(()=>{
       if(this.queryBuilderService.paginateVeterans.value){
         this.filterService.changeFilter.next(true)
       }
-    })   
+    })
   }
 
   getRubric(){
@@ -194,7 +195,7 @@ export class VeteransComponent  implements OnInit {
       this.getVeteransByRubricId()
       // this.cdr.detectChanges()
     })
-   
+
   }
   ngOnDestroy(): void {
     this.filterService.setFullName('')
