@@ -78,6 +78,7 @@
     font-size: 1.8vh;
     padding-top: 0.3vh;
     text-align:start;
+    display: flex;
 
 }
 .card-footer-name{
@@ -91,4 +92,8 @@
 .card-footer-date{
     padding-bottom: 0.5vh;
     display: flex;
+}
+
+.card-footer-last-name-first-letter{
+  color: red;
 }
