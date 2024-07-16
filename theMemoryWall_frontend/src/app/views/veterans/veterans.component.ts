@@ -56,6 +56,7 @@ export class VeteransComponent  implements OnInit {
     public keyboard: any;
     public rubric!:IRubrics
     public wait: boolean = true;
+    public notFound: boolean = false;
     public value = "";
     public letterActive: string = '';
     public veteransShowUrl:string = this.route.snapshot.params['id']
@@ -133,6 +134,11 @@ export class VeteransComponent  implements OnInit {
         //Добавил проверку для того что бы не было багов с пустым локал сторедж
           this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
           this.veteranArray.push(...res.heroes.data);
+          if(this.veteranArray.length == 0){
+            this.notFound = true
+          }else{
+            this.notFound = false
+          }
           this.wait = !this.wait
           this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
         })

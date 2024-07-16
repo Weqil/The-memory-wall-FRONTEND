@@ -51,7 +51,9 @@
                 </ng-container>
             </div>
         </div>
-        
+        <div *ngIf="notFound" class="not-found">
+            <span>Ничего не найдено</span>
+        </div>
        <app-card-grid [veterans]="veteranArray" (scrollEdgeEvents)="paginateSubmit()"></app-card-grid>
        
     </section>
