@@ -25,11 +25,11 @@ export class MemoryPeopleComponent {
 
   }
   ngOnDestroy(): void {
-    // this.filterService.setFullName('')
-    // this.filterService.setLetter('')
-    // this.queryBuilderService.setPaginateVeteransValue(true)
-    // this.queryBuilderService.setPaginateVeterans('')
-    // this.scrollService.scrollEnd()
+    this.filterService.setFullName('')
+    this.filterService.setLetter('')
+    this.queryBuilderService.setPaginateVeteransValue(true)
+    this.queryBuilderService.setPaginateVeterans('')
+    this.scrollService.scrollEnd()
   }
 
 }
