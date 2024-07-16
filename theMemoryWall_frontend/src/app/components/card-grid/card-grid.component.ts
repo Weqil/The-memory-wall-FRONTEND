@@ -30,7 +30,6 @@ export class CardGridComponent implements OnInit {
   checkScrollEdge(func: () => void, block:HTMLElement){
     let edgePosition:any = (block.scrollHeight - block.clientHeight) - ((block.scrollHeight - block.clientHeight)*0.3);
     if (edgePosition  <= block.scrollTop) {
-      console.log(edgePosition)
       edgePosition += block.scrollTop
       func();
     }

@@ -57,6 +57,7 @@ export class VeteransComponent  implements OnInit {
     public rubric!:IRubrics
     public wait: boolean = true;
     public value = "";
+    public letterActive: string = '';
     public veteransShowUrl:string = this.route.snapshot.params['id']
     public greekLayout:any = {}
     public formSearch!: FormGroup
@@ -123,6 +124,8 @@ export class VeteransComponent  implements OnInit {
     // делаю запрос с новым фильтром задаю его в функции для ввода имени с клавиатуры
   }
 
+
+
   getVeteransByRubricId(){
     if (this.wait) {
       if(localStorage.getItem('rubric')){
@@ -157,7 +160,19 @@ export class VeteransComponent  implements OnInit {
     // обнуляем массив для нового заполнения и подключаем новое отслежевание пагинации
   }
 
-  changeLetter(event: Event){
+  clearLetter(){
+  this.veteranArray.length = 0
+  this.queryBuilderService.setPaginateVeterans('')
+  this.filterService.setFullName('')
+  this.value = ''
+  this.formSearch.patchValue({
+    name: ''
+  });
+  this.keyboard.setInput('');
+  this.filterService.setLetter('');
+  this.filterService.changeFilter.next(true)
+  }
+  changeLetter(event?: Event|string){
   this.veteranArray.length = 0
   this.queryBuilderService.setPaginateVeterans('')
   this.filterService.setFullName('')
@@ -192,6 +207,8 @@ export class VeteransComponent  implements OnInit {
       name:new FormControl('')
     })
     this.filterService.changeFilter.pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
+      this.letterActive = this.filterService.getLetter()
+    
       this.getVeteransByRubricId()
       // this.cdr.detectChanges()
     })

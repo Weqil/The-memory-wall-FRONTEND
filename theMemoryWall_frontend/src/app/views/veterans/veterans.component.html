@@ -33,6 +33,19 @@
         
         <div class="letter-filter-wrapper">
             <div class="letter-filter">
+                <div (click)="clearLetter()" class="clear-filter">
+                    <ng-container *ngIf="letterActive == ''">
+                        <div class="clear-filter-text_active">
+                            все
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="letterActive !== ''">
+                        <div class="clear-filter-text">
+                            все
+                        </div>
+                    </ng-container>
+                
+                </div>
                 <ng-container *ngFor="let letter of letterArray">
                     <app-letter [letter]="letter" (letterChanged)="changeLetter($event)"></app-letter>
                 </ng-container>

@@ -26,12 +26,17 @@ public currentletter:string = this.filterService.getLetter()
 
 
 setFilter(){
-  this.letterChanged.emit(this.letter)
+  if(this.letter != this.currentletter){
+    this.letterChanged.emit(this.letter)
+  }else{
+    this.letterChanged.emit('')
+  }
+  
 }
 
 ngOnInit(): void {
-  this.filterService.letter.pipe().subscribe(() => {
-    this.currentletter = this.filterService.getLetter()
+  this.filterService.letter.pipe().subscribe(() => {    
+      this.currentletter = this.filterService.getLetter()
   })
 }
 
