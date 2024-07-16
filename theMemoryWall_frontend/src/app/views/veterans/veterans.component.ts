@@ -17,6 +17,7 @@ import { IRubrics } from '../../models/rubrics';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RubricService } from '../../services/rubric.service';
 import { Subject, takeUntil } from 'rxjs';
+import { BackButtonComponent } from "../../components/back-button/back-button.component";
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -27,9 +28,9 @@ import { Subject, takeUntil } from 'rxjs';
     CommonModule,
     CardGridComponent,
     LetterComponent,
-    ReactiveFormsModule
-
-  ],
+    ReactiveFormsModule,
+    BackButtonComponent
+],
   providers: [VeteransService],
   templateUrl: './veterans.component.html',
   styleUrl: './veterans.component.scss'
@@ -214,7 +215,7 @@ export class VeteransComponent  implements OnInit {
     })
     this.filterService.changeFilter.pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
       this.letterActive = this.filterService.getLetter()
-    
+
       this.getVeteransByRubricId()
       // this.cdr.detectChanges()
     })

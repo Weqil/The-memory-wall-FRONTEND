@@ -25,3 +25,19 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.back-button-wrapper{
+  padding-top: 3vh;
+  padding-left: 10vh;
+  color: #fff;
+  font-family: 'gotham-bold';
+  text-transform: uppercase;
+  font-size:1.1vw;
+  width: 70%;
+}
+
+@media (orientation:portrait) {
+  .back-button-wrapper {
+    padding-left: 1vh;
+  }
+ }

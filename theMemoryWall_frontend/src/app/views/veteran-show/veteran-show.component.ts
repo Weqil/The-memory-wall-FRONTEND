@@ -8,6 +8,7 @@ import { ScrollService } from '../../services/scroll.service';
 import { IVeteran } from '../../models/veteran';
 import { RouterOutlet } from '@angular/router';
 import { catchError, of, Subject } from 'rxjs';
+import { BackButtonComponent } from "../../components/back-button/back-button.component";
 
 @Component({
   selector: 'app-veteran-show',
@@ -15,7 +16,8 @@ import { catchError, of, Subject } from 'rxjs';
   imports: [
     PdfViewerModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    BackButtonComponent
 ],
   templateUrl: './veteran-show.component.html',
   styleUrl: './veteran-show.component.scss'
