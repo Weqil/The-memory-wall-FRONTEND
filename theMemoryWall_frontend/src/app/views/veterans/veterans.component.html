@@ -39,7 +39,7 @@
             </div>
         </div>
         
-       <app-card-grid [veterans]="veteranArray"></app-card-grid>
+       <app-card-grid [veterans]="veteranArray" (scrollEdgeEvents)="paginateSubmit()"></app-card-grid>
        
     </section>
 </main>

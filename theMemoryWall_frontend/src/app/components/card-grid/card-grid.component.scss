@@ -4,8 +4,8 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, 28vw );
-        margin-top: 2vh;
-        grid-gap: 7vh 2vh;
+        margin-top: 1vh;
+        grid-gap: 2vh 2vh;
         max-height: 60%;
         overflow-y: auto;
         height: 45vh;
@@ -16,11 +16,14 @@
 
 @media (orientation: landscape) {
     .card-grid{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 21vw );
+        width: 75%;
+        margin: auto;
+        max-height: 60vh;
+        overflow-y: auto;
         margin-top: 2vh;
-        grid-gap: 10vh 0.4vh;
+        display: grid;
+        grid-template-columns: repeat(4, 13vw );
+        grid-gap: 2vh 4vh;
         align-items: center;
         justify-content: center;
     }

@@ -146,6 +146,8 @@ export class VeteransComponent  implements OnInit {
   
   }
 
+
+
   requestTemplate(){
    this.queryBuilderService.setPaginateVeteransValue(true)
    this.queryBuilderService.setPaginateVeterans('')
@@ -169,11 +171,9 @@ export class VeteransComponent  implements OnInit {
   }
   
   paginateSubmit(){
-    this.scrollService.setCheckScrollEdge(()=>{
       if(this.queryBuilderService.paginateVeterans.value){
         this.filterService.changeFilter.next(true)
       }
-    })   
   }
 
   getRubric(){

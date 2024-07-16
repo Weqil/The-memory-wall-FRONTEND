@@ -24,10 +24,27 @@ export class CardGridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.scrollService.scrollStart(this.grid)
-    this.scrollService.setCheckScrollEdge(()=>{
-      console.log('scroll')
-    },this.grid)
+  
+  }
+
+  checkScrollEdge(func: () => void, block:HTMLElement){
+    let edgePosition:any = (block.scrollHeight - block.clientHeight) - ((block.scrollHeight - block.clientHeight)*0.3);
+    if (edgePosition  <= block.scrollTop) {
+      console.log(edgePosition)
+      edgePosition += block.scrollTop
+      func();
+    }
   }
   
+  ngAfterViewInit(): void {
+    if(this.grid.nativeElement){
+      let block = this.grid.nativeElement
+      block.addEventListener('scroll',()=>{
+        this.checkScrollEdge(()=>{
+          this.scrollEdgeEvents.emit()
+        },block)
+
+      })
+    }
+  }
 }

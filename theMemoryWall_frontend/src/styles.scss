@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'simple-keyboard/build/css/index.css';
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;  
+}
 body,html{
     height: 100%;
     overflow-x: hidden;
@@ -11,6 +15,31 @@ body,html{
         background-position: center;
         background-repeat: no-repeat;
     }
+    
+.simple-keyboard.hg-theme-default {
+  
+    .hg-theme-default .hg-row {
+      display: flex;}
+  }
+  
+  .hg-button.hg-functionBtn.hg-button-space{
+      min-width: 80%;
+  }
+  
+  .hg-theme-default .hg-button {
+      height: 3vh;
+      font-family: 'gotham-medium';
+      font-size: 1.3vh;
+  }
+  .content{
+      padding-top: 5vh;
+  }
+  .simple-keyboard.hg-theme-default {
+      border-radius: 10px;
+      width: calc(100% - 20px);
+      display: block;
+      grid: none;
+  }
 }
 @media (orientation: landscape) {
     body{
@@ -19,6 +48,32 @@ body,html{
         background-position: center;
         background-repeat: no-repeat;
     }
+    
+.simple-keyboard.hg-theme-default {
+  
+    .hg-theme-default .hg-row {
+      display: flex;}
+  }
+  
+  .hg-button.hg-functionBtn.hg-button-space{
+      min-width: 80%;
+  }
+  
+  .hg-theme-default .hg-button {
+      height: 4vh;
+      
+      font-family: 'gotham-medium';
+      font-size: 1.3vh;
+  }
+  .content{
+      padding-top: 5vh;
+  }
+  .simple-keyboard.hg-theme-default {
+      border-radius: 10px;
+      width: calc(100% - 20px);
+      display: block;
+      grid: none;
+  }
 }
 
 *:focus, *:active {
@@ -37,28 +92,3 @@ body,html{
 }
 
 
-
-.simple-keyboard.hg-theme-default {
-  
-  .hg-theme-default .hg-row {
-    display: flex;}
-}
-
-.hg-button.hg-functionBtn.hg-button-space{
-    min-width: 80%;
-}
-
-.hg-theme-default .hg-button {
-    height: 3vh;
-    font-family: 'gotham-medium';
-    font-size: 1.3vh;
-}
-.content{
-    padding-top: 5vh;
-}
-.simple-keyboard.hg-theme-default {
-    border-radius: 10px;
-    width: calc(100% - 20px);
-    display: block;
-    grid: none;
-}

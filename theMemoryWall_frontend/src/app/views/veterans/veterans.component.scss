@@ -69,18 +69,7 @@
 
 }
 
-.input{
-    font-size: 2vh;
-    font-family: 'gotham-medium';
-    margin-top: 1vh;
-    border-radius: 0.3vh;
-    width: 100%;
-    line-height: normal;
-    color: black;
-    height: 3vh;
-    padding-left: 1vh;
-    margin-bottom: 2vh;
-}
+
 .search{
     max-width: 70%;
     margin: auto;
@@ -99,7 +88,7 @@
     }
     .letter-filter{
         cursor: pointer;
-        margin-top: 2vh;
+        margin-top: 1vh;
         display: flex;
         justify-content: center;
         padding-bottom: 0.5vh;
@@ -130,6 +119,18 @@
         padding-left: 2vh;
     
     }
+    .input{
+        font-size: 2vh;
+        font-family: 'gotham-medium';
+        margin-top: 1vh;
+        border-radius: 0.3vh;
+        width: 100%;
+        line-height: normal;
+        color: black;
+        height: 3vh;
+        padding-left: 1vh;
+        margin-bottom: 2vh;
+    }
 }
 
 
@@ -139,7 +140,7 @@
         color: #fff;
         font-family: 'gotham-bold';
         text-transform: uppercase;
-        font-size: 2.2em;
+        font-size:2vw;
         width: 70%;
         margin: auto;
     
@@ -178,6 +179,19 @@
         height: 35vh;
         background-color: #fff;
      }
+
+     .input{
+        font-size: 2vh;
+        font-family: 'gotham-medium';
+        margin-top: 1vh;
+        border-radius: 0.3vh;
+        width: 100%;
+        line-height: normal;
+        color: black;
+        height: 4vh;
+        padding-left: 1vh;
+        margin-bottom: 2vh;
+    }
 }
 
 
