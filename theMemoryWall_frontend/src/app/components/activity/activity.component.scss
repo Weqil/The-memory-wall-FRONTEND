@@ -1,0 +1,21 @@
+.plug{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 99vh;
+    background-color: rgba(0, 0, 0, 0.658);
+    position: absolute;
+    z-index: 100;
+}
+.button{
+    width: 10rem;
+    height: 20rem;
+    background-color: white;
+}
+.warning{
+    color: #fff;
+    font-size: 3.5vh;
+    padding-left: 4vh;
+    font-family: 'gotham-medium';
+}
