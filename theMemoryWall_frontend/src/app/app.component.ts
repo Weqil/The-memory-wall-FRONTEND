@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { ActivityComponent } from './components/activity/activity.component';
 
 import { ScrollService } from './services/scroll.service';
 @Component({
@@ -11,6 +12,7 @@ import { ScrollService } from './services/scroll.service';
   imports: [
     RouterOutlet,
     HeaderComponent,
+    ActivityComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
