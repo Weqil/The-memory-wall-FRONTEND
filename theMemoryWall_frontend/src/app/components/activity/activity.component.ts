@@ -32,7 +32,7 @@ export class ActivityComponent implements OnInit {
       this.time = this.activityService.showTime.value
     })
     this.activityService.startTime(()=>{
-      console.log(this.show)
+
       this.router.navigate(['/home'])
     })
   }

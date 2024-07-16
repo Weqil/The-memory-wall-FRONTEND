@@ -1,9 +1,7 @@
 
 
-.content{
-    padding-top: 2vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
+.content-wrapper{
+
 }
 .title{
     color: #fff;
@@ -11,9 +9,9 @@
     font-size: 4vh;
     margin-bottom: 2rem;
 }
-.iframe{
+.iframe {
+    width: 1920px;
+    height: 1080px;
     transform: scale();
-     transform-origin: 0 0;
-     width: 100%; /* Ширина 50% от родительского контейнера */
-     height: 100vh; /* Автоматическая высота, чтобы сохранить пропорции */
-}
+    transform-origin: top left;
+  }
