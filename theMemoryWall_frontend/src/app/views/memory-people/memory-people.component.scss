@@ -1,7 +1,8 @@
 
 
 .content-wrapper{
-
+    background-color: #fff;
+    height: 100vh;
 }
 .title{
     color: #fff;
@@ -10,8 +11,9 @@
     margin-bottom: 2rem;
 }
 .iframe {
+
     width: 1920px;
-    height: 1080px;
-    transform: scale();
+    height: 964px;
+
     transform-origin: top left;
   }
