@@ -4,7 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { ActivityComponent } from './components/activity/activity.component';
-
+import { FooterComponent } from './components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
 @Component({
   selector: 'app-root',

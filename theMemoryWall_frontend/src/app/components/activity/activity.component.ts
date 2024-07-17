@@ -24,13 +24,16 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.time = 0
 
     this.activityService.showPlug.subscribe(value => {
         this.show = value
+       
     })
     this.activityService.showTime.subscribe(value => {
       this.time = this.activityService.showTime.value
     })
+   
     this.activityService.startTime(()=>{
 
       this.router.navigate(['/home'])

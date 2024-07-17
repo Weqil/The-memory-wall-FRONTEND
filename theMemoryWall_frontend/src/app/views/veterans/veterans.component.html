@@ -23,6 +23,9 @@
                 <div>
                     <form [formGroup]="formSearch" class="input-wrapper">
                             <input placeholder="поиск по фамиилии" formControlName="name" (input)="onInputChange($event)" class="input" value={{value}}/>
+                             <button class="clear-name" (click)="clearButton()">
+                                 <img class="clear-name-icon" src="/assets/icons/clear.svg" alt="">
+                             </button>
                         <div>
                             <button type="submit" (click)="searchVeteranName()" class="search-button">Найти</button>
                         </div>

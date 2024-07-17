@@ -84,10 +84,10 @@ export class VeteransComponent  implements OnInit {
           "{shift}": "⇧",
           "{shiftactivated}": "⇧",
           "{enter}": "return",
-          "{bksp}": "⌫",
+          "{bksp}": "СТЕРЕТЬ",
           "{altright}": ".?123",
           "{downkeyboard}": "🞃",
-          "{space}": " ",
+          "{space}": " ПРОБЕЛ ",
           "{default}": "ABC",
         }
       })
@@ -127,6 +127,18 @@ export class VeteransComponent  implements OnInit {
   }
 
 
+  clearButton(){
+    this.veteranArray.length = 0
+    this.queryBuilderService.setPaginateVeterans('')
+    this.filterService.setFullName('')
+    this.value = ''
+    this.formSearch.patchValue({
+     name: ''
+    });
+   this.keyboard.setInput('');
+   this.filterService.setLetter(String(''));
+   this.filterService.changeFilter.next(true)
+  }
 
   getVeteransByRubricId(){
     if (this.wait) {

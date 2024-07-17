@@ -22,6 +22,7 @@ export class ActivityService {
           this.timeActive--;
           this.showPlug.next(false);
         } else {
+          
           this.showPlug.next(false);
           this.wait = true;
           func();

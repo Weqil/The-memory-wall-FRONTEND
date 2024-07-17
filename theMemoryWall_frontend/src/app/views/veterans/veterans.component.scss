@@ -113,7 +113,7 @@
         justify-content: center;
     }
     .rubric-name{
-        padding-top: 1.8em;
+        padding-top: 0.5em;
         color: #fff;
         font-family: 'gotham-bold';
         text-transform: uppercase;
@@ -133,7 +133,7 @@
     }
     .input{
         font-size: 2vh;
-        font-family: 'gotham-medium';
+        font-family: 'gotham-light';
         margin-top: 1vh;
         border-radius: 0.3vh;
         width: 100%;
@@ -234,5 +234,32 @@
 ::placeholder { /* Most modern browsers support this now. */
     color:rgb(167, 167, 167);
     font-size: 1.5vh;
-    font-family: 'gotham-medium';
+    font-family: 'gotham-light';
+ }
+
+ .clear-name{
+    background: none;
+    border: none;
+    max-width: 1vh;
+    max-height: 1vh;
+ }
+ .clear-name-icon{
+    max-width: 2.5vh;
+    position: absolute;
+    margin-left: -6%;
+    transition: 0.2s;
+    margin-top: -1.5vh;
+    max-height: 2vh;
+    background: none;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(2%) saturate(0%) hue-rotate(274deg) brightness(97%) contrast(92%);
+ }
+ .clear-name-icon:active{
+    max-width: 2.55vh;
+    position: absolute;
+    margin-left: -6%;
+    margin-top: -1.75vh;
+    transition: 0.2s;
+    max-height: 2.2vh;
+    background: none;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(2%) saturate(0%) hue-rotate(274deg) brightness(97%) contrast(92%);
  }
