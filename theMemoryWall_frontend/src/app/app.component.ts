@@ -12,7 +12,9 @@ import { ScrollService } from './services/scroll.service';
   imports: [
     RouterOutlet,
     HeaderComponent,
-    ActivityComponent
+    ActivityComponent,
+    FooterComponent,
+    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

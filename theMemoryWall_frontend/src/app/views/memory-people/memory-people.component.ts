@@ -5,12 +5,14 @@ import { QueryBuilderService } from '../../services/query-builder.service';
 import { FilterService } from '../../services/filter.service';
 import {CookieService} from 'ngx-cookie-service';
 import { RubricService } from '../../services/rubric.service';
+import { BackButtonComponent } from '../../components/back-button/back-button.component';
 @Component({
   selector: 'app-memory-people',
   standalone: true,
   imports: [
     RouterModule,
-    RouterLink
+    RouterLink,
+    BackButtonComponent
   ],
   templateUrl: './memory-people.component.html',
   styleUrl: './memory-people.component.scss'
