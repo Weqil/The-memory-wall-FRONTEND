@@ -1,4 +1,12 @@
-
+.grid-wrapper{
+    z-index: 20;
+    position: relative;
+    /* height: 80vh; */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
 
 @media (orientation: landscape) {
     .video{
@@ -34,6 +42,8 @@
         grid-template-columns: repeat(3, 20%);
         justify-content: center;
 
+        align-items: center;
+
    }
 }
 
@@ -67,7 +77,8 @@
         display: grid;
         grid-template-columns: repeat(2, 30%);
         justify-content: center;
-        grid-gap: 1em 10vw;
+        align-items: center;
+        grid-gap: 4vh 3vw;
    }
 }
 

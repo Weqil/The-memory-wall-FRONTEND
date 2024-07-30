@@ -3,12 +3,12 @@
      .card-grid{
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, 28vw );
+        grid-template-columns: repeat(auto-fill, 24vw);
         margin-top: 1vh;
         grid-gap: 2vh 2vh;
         max-height: 60%;
         overflow-y: auto;
-        height: 52vh;
+        height: 45.5vh;
         justify-content: center;
     }
 }

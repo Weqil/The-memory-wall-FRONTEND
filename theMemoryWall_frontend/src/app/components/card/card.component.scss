@@ -1,14 +1,14 @@
 
 @media (orientation:portrait) {
     .card{
-        min-width: 28vw;
+        width: 24vw;
         cursor: pointer;
         position: relative;
         overflow: none;
         background-color: #fff;
      }
      .card-header{
-      height: 25vh;
+      height: 15vh;
   }
     .card-header{
         background-repeat: no-repeat;
@@ -18,11 +18,7 @@
         width: 100%;
     }
     .card-footer{
-        margin-top: -3vh;
-        background-color: #fff;
-        font-family: 'gotham-bold';
-        color: rgb(31, 31, 31);
-        font-size: 1.5vh;
+        
         padding-top: 0.6vh;
         text-align:start;
         padding-left: 0.3vh;
@@ -74,11 +70,11 @@
 
 .card-footer-last-name{
     font-family: 'gotham-bold';
-    color: rgb(0, 0, 0);
+    word-wrap: break-word;
+    // color: rgb(0, 0, 0);
     font-size: 1.8vh;
-    padding-top: 0.3vh;
-    text-align:start;
-    display: flex;
+    // padding-top: 0.3vh;
+    // text-align:start;
 
 }
 .card-footer-name{
