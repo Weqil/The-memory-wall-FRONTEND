@@ -26,7 +26,6 @@ export class ScrollService {
 
   public scrollEnd(){
     this.document.body.removeEventListener('scroll', ()=>{
-      console.log('END SCROLL')  
     });
   }
 

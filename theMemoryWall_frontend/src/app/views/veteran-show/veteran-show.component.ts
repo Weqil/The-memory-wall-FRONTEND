@@ -42,18 +42,14 @@ export class VeteranShowComponent implements OnInit  {
   ngOnInit(): void {
     this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
       catchError((err: Error) => {
-        console.log(err)
 
         return of("Error:" + err.message)
       })
     )
     .subscribe((response: any) => {
-      console.log(response)
       if (response.hero) {
         this.veteran = response.hero
         this.url = `${this.url}/${this.veteran.file_name}`
-      } else {
-        console.log(response)
       }
     })
   }

@@ -27,4 +27,7 @@ public protocol:string = environment.backProtocol
 setFilter(){
   this.filterService.setRubricIds(`${this.rubric.id}`)
 }
+goToRemember() {
+  document.location.href = `https://pamyat-naroda.ru/heroes/`
+}
 }

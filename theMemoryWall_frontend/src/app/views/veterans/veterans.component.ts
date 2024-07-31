@@ -126,8 +126,6 @@ export class VeteransComponent  implements OnInit {
           this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
           this.veteranArray = this.veteranArray.concat(res.heroes.data);
           this.rubric = res.heroes.data[0].rubrics[0]
-          console.log(this.rubric)
-          console.log(res.heroes)
           this.wait = !this.wait
           if(res.heroes.next_cursor){
             this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
@@ -143,9 +141,7 @@ export class VeteransComponent  implements OnInit {
         this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
           this.veteranArray = res.heroes.data;
           this.rubric = res.heroes.data[0].rubrics[0]
-          console.log(this.rubric)
           this.wait = !this.wait
-          console.log(res.heroes.data)
         })
       }
     }
@@ -190,7 +186,6 @@ export class VeteransComponent  implements OnInit {
     this.queryBuilderService.setPaginateVeteransValue(true)
     this.queryBuilderService.setPaginateVeterans('')
      this.veteranArray.length = 0
-    console.log("destroy")
   }
 
 }

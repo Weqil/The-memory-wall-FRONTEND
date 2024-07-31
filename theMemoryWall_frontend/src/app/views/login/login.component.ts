@@ -18,17 +18,13 @@ export class LoginComponent implements OnInit {
 
   clickTest() {
     this.authService.getUser().pipe().subscribe((res: any) => {
-      console.log(res)
     })
   }
   login(){
-    console.log(this.authForm.value)
     this.authService.authUser(this.authForm.value).pipe().subscribe({
       next: (res:any) => {
-        console.log(res)
       },
       error: (err:any) => {
-        console.log(err.error.message)
       }
      })
   

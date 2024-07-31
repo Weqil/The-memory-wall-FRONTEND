@@ -20,8 +20,6 @@ export class DragAndDropComponent {
       tempArray.forEach((file:File)=>{
         if((this.types.indexOf(file.name.split('.').pop()) !== -1) && (this.files.map(elem=>elem.name).indexOf(file.name) == -1)) {
           this.files.push(file)
-        }else{
-          console.log('тип файла не подходит или файл уже загружен')
         }
       })
     }

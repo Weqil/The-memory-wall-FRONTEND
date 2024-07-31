@@ -1,7 +1,7 @@
 <div (click)="canceledRequest()" class="card">
  
  
-    <ng-container *ngIf="veteran.photos.length > 0;">
+    <ng-container *ngIf="veteran.photos.length">
         <ng-container *ngIf="!veteran.photos[0].local">
             <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
@@ -13,9 +13,9 @@
         
     </ng-container >
 
-    <ng-container *ngIf="veteran.photos.length == 0">
-        <div style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
-      
+    <ng-container *ngIf="!veteran.photos.length">
+        <div *ngIf="!veteran.rubrics.length" style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
+        <div *ngIf="veteran.rubrics.length" style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.rubrics[0].image}}');" class="card-header"></div>
     </ng-container >
 
     <div>
