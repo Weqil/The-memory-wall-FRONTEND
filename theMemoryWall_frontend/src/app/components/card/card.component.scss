@@ -1,22 +1,28 @@
 
 @media (orientation:portrait) {
     .card{
-        min-width: 28vw;
+        width: 24vw;
         cursor: pointer;
-        height: 26vh;
         position: relative;
         overflow: none;
         background-color: #fff;
      }
      .card-header{
-      height: 25vh;
+      height: 15vh;
   }
     .card-header{
         background-repeat: no-repeat;
         background-size: cover;
-        height: 80%;
+
         background-position: top;
         width: 100%;
+    }
+    .card-footer{
+        
+        padding-top: 0.6vh;
+        text-align:start;
+        padding-left: 0.3vh;
+        padding-bottom: 0.1vh;
     }
 }
 
@@ -26,8 +32,8 @@
         cursor: pointer;
         position: relative;
         overflow: none;
-        width: 20vw;
-        height: 52vh;
+        width: 13vw;
+        height: 28vh;
         background-color: #fff;
      }
      .card-header{
@@ -44,13 +50,8 @@
     background-position: top;
     width: 100%;
 }
-}
-
-
-
-
-
 .card-footer{
+    margin-top: -2vh;
     background-color: #fff;
     font-family: 'gotham-bold';
     color: rgb(31, 31, 31);
@@ -58,20 +59,28 @@
     padding-top: 0.6vh;
     text-align:start;
     padding-left: 0.3vh;
-    padding-bottom: 1vh;
+    padding-bottom: 0.1vh;
 }
+}
+
+
+
+
+
+
 .card-footer-last-name{
     font-family: 'gotham-bold';
-    color: rgb(0, 0, 0);
-    font-size: 2.2vh;
-    padding-top: 0.3vh;
-    text-align:start;
+    word-wrap: break-word;
+    // color: rgb(0, 0, 0);
+    font-size: 1.8vh;
+    // padding-top: 0.3vh;
+    // text-align:start;
 
 }
 .card-footer-name{
     font-family: 'gotham-medium';
     color: rgb(0, 0, 0);
-    font-size: 1.8vh;
+    font-size: 1.5vh;
     padding-top: 0.3vh;
     padding-bottom: 0.3vh;
     text-align:start;
@@ -79,4 +88,8 @@
 .card-footer-date{
     padding-bottom: 0.5vh;
     display: flex;
+}
+
+.card-footer-last-name-first-letter{
+  color: red;
 }

@@ -18,4 +18,8 @@ export class RubricService {
     // return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero`, { params: { ...params } }); 
     return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/rubrics`); 
    }
+   getRubricById(id: string) {
+    // return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero`, { params: { ...params } }); 
+    return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/rubrics/${id}`); 
+   }
 }

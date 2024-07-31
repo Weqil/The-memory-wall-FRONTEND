@@ -1,7 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FilterService } from '../../services/filter.service';
 import { CommonModule } from '@angular/common';
 import { QueryBuilderService } from '../../services/query-builder.service';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-letter',
   standalone: true,
@@ -12,35 +13,37 @@ import { QueryBuilderService } from '../../services/query-builder.service';
   styleUrl: './letter.component.scss'
 })
 export class LetterComponent implements OnInit, OnDestroy {
+  private readonly destroy$ = new Subject<void>()
   constructor(
+    private cdr: ChangeDetectorRef,
     private filterService: FilterService,
     private queryBuilderService: QueryBuilderService,
   ){}
 @Input() letter:string = ''
-public currentletter:string = ''
+@Output() letterChanged = new EventEmitter();
+public currentletter:string = this.filterService.getLetter()
 
 
 
 setFilter(){
-  if(this.filterService.getLetter() == this.letter){
-    this.filterService.setLetter('')
-    this.filterService.changeFilter.next(true)
+  if(this.letter != this.currentletter){
+    this.letterChanged.emit(this.letter)
   }else{
-    this.filterService.setLetter(this.letter)
-    this.filterService.changeFilter.next(true)
+    this.letterChanged.emit('')
   }
   
-
 }
 
 ngOnInit(): void {
-  this.filterService.letter.pipe().subscribe(() => {
-    this.currentletter = this.filterService.getLetter()
+  this.filterService.letter.pipe().subscribe(() => {    
+      this.currentletter = this.filterService.getLetter()
   })
 }
 
 ngOnDestroy(): void {
   this.filterService.removeFilters()
+  this.destroy$.next()
+  this.destroy$.complete()
 }
 
 }

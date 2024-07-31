@@ -5,49 +5,66 @@
 
    </div>
     <section class="content">
-        <div routerLink="/home" class="back-button">
-            <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
-        </div>
-        <ng-container *ngIf="rubric">
-            <div class="rubric-name">
-                <span>{{rubric.subtitle}}</span>
-            </div>
-        </ng-container>
-      
+
+
+      <div class="back-button-wrapper">
+        <app-back-button></app-back-button>
+      </div>
+      <ng-container *ngIf="rubric">
+          <div class="rubric-name">
+              <span>
+                {{rubric.subtitle}}
+              </span>
+          </div>
+      </ng-container>
+
        <div>
             <div class="search">
                 <div>
-                    <div class="search-title">
-                        Поиск человека
-                    </div>
-
-                    <div class="input-wrapper">
-                        <input (input)="onInputChange($event)" class="input" value={{value}}/>
-                        <div>   
-                            <button (click)="searchVeteranName()" class="search-button">Найти</button>
+                    <form [formGroup]="formSearch" class="input-wrapper">
+                            <input placeholder="поиск по фамиилии" formControlName="name" (input)="onInputChange($event)" class="input" value={{value}}/>
+                             <button class="clear-name" (click)="clearButton()">
+                                 <img class="clear-name-icon" src="/assets/icons/clear.svg" alt="">
+                             </button>
+                        <div>
+                            <button type="submit" (click)="searchVeteranName()" class="search-button">Найти</button>
                         </div>
-                   
-                    </div>
-                    
+                    </form>
+
                     <div>
-                        <div style="" class="simple-keyboard"></div>
-                    </div> 
+                        <div class="simple-keyboard"></div>
+                    </div>
                 </div>
-                
-            
+
+
             </div>
        </div>
-        
+
         <div class="letter-filter-wrapper">
             <div class="letter-filter">
+                <div (click)="clearLetter()" class="clear-filter">
+                    <ng-container *ngIf="letterActive == ''">
+                        <div class="clear-filter-text_active">
+                            все
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="letterActive !== ''">
+                        <div class="clear-filter-text">
+                            все
+                        </div>
+                    </ng-container>
+
+                </div>
                 <ng-container *ngFor="let letter of letterArray">
-                    <app-letter [letter]="letter"></app-letter>
+                    <app-letter [letter]="letter" (letterChanged)="changeLetter($event)"></app-letter>
                 </ng-container>
             </div>
         </div>
+        <div *ngIf="notFound" class="not-found">
+            <span>Ничего не найдено</span>
+        </div>
+       <app-card-grid [veterans]="veteranArray" (scrollEdgeEvents)="paginateSubmit()"></app-card-grid>
 
-       <app-card-grid [veterans]="veteranArray"></app-card-grid>
-       
     </section>
 </main>
-       
+

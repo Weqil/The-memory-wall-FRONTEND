@@ -1,16 +1,18 @@
 <section class="content">
-  <div routerLink="/veterans/2" class="back-button">
-    <img class="back-button-img" src="assets/icons/arrow.svg" alt="">
-</div>
-<div class="pdf-wrapper">
-  <pdf-viewer
-  class="pdf-wrapper-content"
-  [src]="url"
-  [render-text]="true"
-  [original-size]="false">
-  </pdf-viewer>
 
-</div>
+  <div class="back-button-wrapper">
+    <app-back-button></app-back-button>
+  </div>
+
+  <div class="pdf-wrapper">
+      <pdf-viewer
+      class="pdf-wrapper-content"
+      [src]="url"
+      [render-text]="true"
+      [original-size]="false">
+      </pdf-viewer>
+
+  </div>
 
 </section>
 

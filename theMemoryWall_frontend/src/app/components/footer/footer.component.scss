@@ -1,0 +1,25 @@
+footer{
+   
+    width: 100%;
+    height: 14vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: 'quadratGrotesk';
+    font-size: 3.4vh;
+    text-transform: uppercase;
+    bottom: 0;
+    z-index: 100;
+    color: #fff;
+   
+  
+}
+.flex-item_2{
+    padding-top: 0.3vh;
+    padding-right: 2vh;
+    align-self:flex-end;
+}
+.flex-item_1{
+    padding-left: 3vh;
+    align-self:flex-start;
+}

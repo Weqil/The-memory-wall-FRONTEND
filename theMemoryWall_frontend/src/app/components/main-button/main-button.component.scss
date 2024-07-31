@@ -7,12 +7,12 @@
         height: 50vh;
         object-fit: fill;
      }
-   
+
      .video-wrapper{
         display: flex;
         justify-content: center;
          object-fit: cover;
-         
+
      }
      .button-grid-item{
         cursor: pointer;
@@ -20,7 +20,9 @@
         background-position: center;
         background-repeat: no-repeat;
         object-fit: fill;
-        width: 60%;
+        width:12vw;
+
+        background-color: #fff;
         height: 16vh;
         border-radius: 2vh;
     }
@@ -44,6 +46,7 @@
         width: 100%;
         border-radius: 2.5vh;
         height: 14vh;
+        background-color: #fff;
     }
     .video{
         margin: auto;
@@ -51,7 +54,7 @@
         height: 40vh;
         object-fit: fill;
      }
-    
+
      .video-wrapper{
         display: flex;
         justify-content: center;
@@ -70,12 +73,14 @@
 .button-grid-item_text{
     margin-top: 0.5vh;
     color: #fff;
+    height: 1vh;
     text-align: center;
     font-family: 'gotham-bold';
     font-size: 1.6vh;
 }
 .button-wrapper{
     display: flex;
+    grid-row: 2;
     align-items: center;
     justify-content: center;
     flex-direction: column;

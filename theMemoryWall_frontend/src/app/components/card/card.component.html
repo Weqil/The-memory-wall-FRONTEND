@@ -1,7 +1,7 @@
-<div (click)="canceledRequest()" class="card">
- 
- 
-    <ng-container *ngIf="veteran.photos.length">
+<div routerLink="/veteran/{{veteran.id}}" class="card">
+
+
+    <ng-container *ngIf="veteran.photos.length > 0;">
         <ng-container *ngIf="!veteran.photos[0].local">
             <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
@@ -10,7 +10,7 @@
             <div style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.photos[0].url}}');" class="card-header"></div>
         </ng-container>
 
-        
+
     </ng-container >
 
     <ng-container *ngIf="!veteran.photos.length">
@@ -21,17 +21,17 @@
     <div>
         <div class="card-footer">
             <div class="card-footer-last-name">
-                {{veteran.last_name}}
+              <span class="card-footer-last-name-first-letter">{{ veteran.last_name[0] }}</span>{{veteran.last_name.slice(1, veteran.last_name.length)}}
             </div>
-            
+
             <div class="card-footer-name">
             {{veteran.first_name}}
             <div>
                 {{veteran.middle_name}}
             </div>
-    
+
             </div>
-    
+
         </div>
     </div>
 </div>

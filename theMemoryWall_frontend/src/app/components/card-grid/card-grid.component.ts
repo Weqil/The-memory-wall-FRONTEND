@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, viewChild } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { IVeteran } from '../../models/veteran';
 import { CommonModule } from '@angular/common';
+import { ScrollService } from '../../services/scroll.service';
 @Component({
   selector: 'app-card-grid',
   standalone: true,
@@ -12,8 +13,37 @@ import { CommonModule } from '@angular/common';
   templateUrl: './card-grid.component.html',
   styleUrl: './card-grid.component.scss'
 })
-export class CardGridComponent {
+
+export class CardGridComponent implements OnInit {
 
   @Input() veterans!:IVeteran[]
+  @Output() scrollEdgeEvents = new EventEmitter();
+  @ViewChild('grid') grid!:ElementRef
+  constructor(private scrollService: ScrollService){
 
+  }
+
+  ngOnInit(): void {
+  
+  }
+
+  checkScrollEdge(func: () => void, block:HTMLElement){
+    let edgePosition:any = (block.scrollHeight - block.clientHeight) - ((block.scrollHeight - block.clientHeight)*0.3);
+    if (edgePosition  <= block.scrollTop) {
+      edgePosition += block.scrollTop
+      func();
+    }
+  }
+  
+  ngAfterViewInit(): void {
+    if(this.grid.nativeElement){
+      let block = this.grid.nativeElement
+      block.addEventListener('scroll',()=>{
+        this.checkScrollEdge(()=>{
+          this.scrollEdgeEvents.emit()
+        },block)
+
+      })
+    }
+  }
 }
