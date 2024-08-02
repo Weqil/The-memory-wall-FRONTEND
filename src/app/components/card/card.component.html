@@ -15,7 +15,7 @@
 
     <ng-container *ngIf="!veteran.photos.length">
         <div *ngIf="!veteran.rubrics.length" style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
-        <div *ngIf="veteran.rubrics.length" style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.rubrics[0].image}}');" class="card-header"></div>
+        <div *ngIf="veteran.rubrics.length" style="filter: grayscale(100%); background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.rubrics[0].image}}');" class="card-header"></div>
     </ng-container >
 
     <div>
