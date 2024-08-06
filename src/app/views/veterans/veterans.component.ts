@@ -242,12 +242,12 @@ export class VeteransComponent  implements OnInit {
     .subscribe((response: any) => {
       if (response.hero) {
         this.veteranShowHero = response.hero
-         this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
+        this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
         content.style.display = 'block'
         setTimeout(()=>{
         content.style.transition = '0.3s'
         content.style.transform = 'translate(0vw)'
-        },100)
+        },400)
       } else {
       }
     })
