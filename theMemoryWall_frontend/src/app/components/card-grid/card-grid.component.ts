@@ -36,7 +36,6 @@ export class CardGridComponent implements OnInit {
     }
   }
   cardClick(event:any){
-    console.log(event)
     this.cardEmitt.emit(event)
   }
   ngAfterViewInit(): void {

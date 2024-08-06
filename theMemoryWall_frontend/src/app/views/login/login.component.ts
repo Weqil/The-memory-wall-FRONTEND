@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   clickTest() {
     this.authService.getUser().pipe().subscribe((res: any) => {
-      console.log(res)
+     
     })
   }
   login(){

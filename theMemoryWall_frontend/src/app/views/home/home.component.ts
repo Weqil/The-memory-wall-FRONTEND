@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   getRubric():void{
     this.rubricService.getRubric(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((data) => {
       this.rubrics = data.rubrics;
-      console.log(this.rubrics)
     });
   }
 

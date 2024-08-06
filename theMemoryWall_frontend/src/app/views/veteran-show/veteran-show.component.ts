@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { Router, RouterLink } from '@angular/router';
 import { VeteransService } from '../../services/veterans.service';
@@ -34,31 +34,31 @@ export class VeteranShowComponent implements OnInit  {
 
    }
 
-   public veteran!:IVeteran
-
+   @Input() veteran!:IVeteran
+   @Input() url!:string 
    public host:string = environment.backHost
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
 
-   public url:string = `${this.protocol}://${this.host}:${this.port}/api/files/pdf`;
+  
 
   ngOnInit(): void {
-    this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
-      catchError((err: Error) => {
-        console.log(err)
+    // this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
+    //   catchError((err: Error) => {
+    //     console.log(err)
 
-        return of("Error:" + err.message)
-      })
-    )
-    .subscribe((response: any) => {
-      console.log(response)
-      if (response.hero) {
-        this.veteran = response.hero
-        this.url = `${this.url}/${this.veteran.file_name}`
-      } else {
-        console.log(response)
-      }
-    })
+    //     return of("Error:" + err.message)
+    //   })
+    // )
+    // .subscribe((response: any) => {
+    //   console.log(response)
+    //   if (response.hero) {
+    //     this.veteran = response.hero
+    //     this.url = `${this.url}/${this.veteran.file_name}`
+    //   } else {
+    //     console.log(response)
+    //   }
+    // })
   }
 
 

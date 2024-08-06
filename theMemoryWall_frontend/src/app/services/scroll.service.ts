@@ -22,7 +22,7 @@ export class ScrollService {
      let blockHtml = block.nativeElement
      this.scrollYTemp.next(blockHtml.clientHeight)
      blockHtml.addEventListener('scroll',(event:any)=>{
-      console.log('scroll')
+    
       this.checkScrollEdge(this.checkScrollEdgeFunc,this.scrollBlock)
      })
     }else{
@@ -37,7 +37,6 @@ export class ScrollService {
 
   public scrollEnd(){
     this.document.body.removeEventListener('scroll', ()=>{
-      console.log('END SCROLL')  
     });
   }
 
@@ -58,7 +57,6 @@ export class ScrollService {
     }
   }
   
-
 setCheckScrollEdge(func:()=>void, element?:ElementRef):void{
   this.clearScroll()
   this.checkScrollEdgeFunc = func
@@ -66,7 +64,6 @@ setCheckScrollEdge(func:()=>void, element?:ElementRef):void{
 
 clearScroll(){
   this.scrollYTemp.next(0)
-
 }
 
 }

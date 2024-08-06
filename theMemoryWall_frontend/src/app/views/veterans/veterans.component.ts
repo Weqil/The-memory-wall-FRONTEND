@@ -16,10 +16,11 @@ import { DOCUMENT } from '@angular/common';
 import { IRubrics } from '../../models/rubrics';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RubricService } from '../../services/rubric.service';
-import { Subject, takeUntil } from 'rxjs';
+import { catchError, of, Subject, takeUntil } from 'rxjs';
 import { BackButtonComponent } from "../../components/back-button/back-button.component";
 import { RouteReuseStrategy } from '@angular/router';
 import { VeteranShowComponent } from '../veteran-show/veteran-show.component';
+import { environment } from '../../../environments/environments';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -69,6 +70,11 @@ export class VeteransComponent  implements OnInit {
     public greekLayout:any = {}
     public formSearch!: FormGroup
     public veteranShowId!:number
+    public veteranShowHero!:IVeteran
+    public host:string = environment.backHost
+    public port:string = environment.backPort
+    public protocol:string = environment.backProtocol
+    public url!:string
 
     ngAfterViewInit() {
       this.keyboard = new Keyboard({
@@ -222,15 +228,31 @@ export class VeteransComponent  implements OnInit {
     setTimeout(()=>{
       content.style.display = 'none'
     },300)
-    console.log(content)
+ 
   }
   openVeteranShow(event:any, content:HTMLElement){
+
     this.veteranShowId = event
-    content.style.display = 'block'
-    setTimeout(()=>{
-    content.style.transition = '0.3s'
-    content.style.transform = 'translate(0vw)'
-    },100)
+    this.veteransService.getVeteranById(event).pipe(
+      catchError((err: Error) => {
+    
+        return of("Error:" + err.message)
+      })
+    )
+    .subscribe((response: any) => {
+      if (response.hero) {
+        this.veteranShowHero = response.hero
+         this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
+        content.style.display = 'block'
+        setTimeout(()=>{
+        content.style.transition = '0.3s'
+        content.style.transform = 'translate(0vw)'
+        },100)
+      } else {
+      }
+    })
+  
+   
    
   }
   getRubric(){
