@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, Inject, OnInit,ViewChild,inject } from '@angular/core';
-import { Routes, RouterModule,RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { Routes, RouterModule,RouterLink, RouterLinkActive, ActivatedRoute, provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Keyboard from "simple-keyboard";
 import { VeteransService } from '../../services/veterans.service';
@@ -16,8 +16,11 @@ import { DOCUMENT } from '@angular/common';
 import { IRubrics } from '../../models/rubrics';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RubricService } from '../../services/rubric.service';
-import { Subject, takeUntil } from 'rxjs';
+import { catchError, of, Subject, takeUntil } from 'rxjs';
 import { BackButtonComponent } from "../../components/back-button/back-button.component";
+import { RouteReuseStrategy } from '@angular/router';
+import { VeteranShowComponent } from '../veteran-show/veteran-show.component';
+import { environment } from '../../../environments/environments';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -29,9 +32,12 @@ import { BackButtonComponent } from "../../components/back-button/back-button.co
     CardGridComponent,
     LetterComponent,
     ReactiveFormsModule,
+    VeteranShowComponent,
     BackButtonComponent
 ],
-  providers: [VeteransService],
+  providers: [
+    VeteransService,
+  ],
   templateUrl: './veterans.component.html',
   styleUrl: './veterans.component.scss'
 })
@@ -63,6 +69,12 @@ export class VeteransComponent  implements OnInit {
     public veteransShowUrl:string = this.route.snapshot.params['id']
     public greekLayout:any = {}
     public formSearch!: FormGroup
+    public veteranShowId!:number
+    public veteranShowHero!:IVeteran
+    public host:string = environment.backHost
+    public port:string = environment.backPort
+    public protocol:string = environment.backProtocol
+    public url!:string
 
     ngAfterViewInit() {
       this.keyboard = new Keyboard({
@@ -210,7 +222,39 @@ export class VeteransComponent  implements OnInit {
         this.filterService.changeFilter.next(true)
       }
   }
+  hideShow(content:HTMLElement){
+    content.style.transition = '0.3s'
+    content.style.transform = 'translate(100vw)'
+    setTimeout(()=>{
+      content.style.display = 'none'
+    },300)
+ 
+  }
+  openVeteranShow(event:any, content:HTMLElement){
 
+    this.veteranShowId = event
+    this.veteransService.getVeteranById(event).pipe(
+      catchError((err: Error) => {
+    
+        return of("Error:" + err.message)
+      })
+    )
+    .subscribe((response: any) => {
+      if (response.hero) {
+        this.veteranShowHero = response.hero
+        this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
+        content.style.display = 'block'
+        setTimeout(()=>{
+        content.style.transition = '0.3s'
+        content.style.transform = 'translate(0vw)'
+        },300)
+      } else {
+      }
+    })
+  
+   
+   
+  }
   getRubric(){
     this.rubricService.getRubricById(this.veteransShowUrl).pipe().subscribe((res:any)=>{
     this.rubric = res.rubric

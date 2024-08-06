@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   clickTest() {
     this.authService.getUser().pipe().subscribe((res: any) => {
+
     })
   }
   login(){
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
       error: (err:any) => {
       }
      })
-  
+
   }
 
   ngOnInit(): void {
@@ -36,5 +37,5 @@ export class LoginComponent implements OnInit {
       password: new FormControl(''),
     })
   }
-  
+
 }

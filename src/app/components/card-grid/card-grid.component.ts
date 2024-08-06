@@ -18,6 +18,7 @@ export class CardGridComponent implements OnInit {
 
   @Input() veterans!:IVeteran[]
   @Output() scrollEdgeEvents = new EventEmitter();
+  @Output() cardEmitt = new EventEmitter();
   @ViewChild('grid') grid!:ElementRef
   constructor(private scrollService: ScrollService){
 
@@ -34,7 +35,9 @@ export class CardGridComponent implements OnInit {
       func();
     }
   }
-  
+  cardClick(event:any){
+    this.cardEmitt.emit(event)
+  }
   ngAfterViewInit(): void {
     if(this.grid.nativeElement){
       let block = this.grid.nativeElement

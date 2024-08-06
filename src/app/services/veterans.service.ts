@@ -19,6 +19,7 @@ export class VeteransService {
 
   }
   getVeterans(searchString: string) {
+
     return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero?full_name= ${searchString}`);
   }
 
