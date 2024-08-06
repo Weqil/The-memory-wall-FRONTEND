@@ -1,4 +1,7 @@
 <div  #grid class="card-grid">
+    <div *ngIf="notFound" class="not-found">
+        <span>Ничего не найдено</span>
+    </div>
     <ng-container *ngFor="let veteran of veterans">
         <app-card (cardEmitt)="cardClick($event)" [veteran]="veteran"></app-card>
     </ng-container>

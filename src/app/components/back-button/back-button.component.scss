@@ -7,20 +7,20 @@
     height: 100%;
     display: flex;
     align-items: center;
-
+    justify-content: center;
     color: #fff;
     font-family: 'gotham-bold';
     text-transform: uppercase;
     font-size:1.3vh;
-    width: 70%;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    background: rgb(148, 5, 5);
     
 }
 
 .back-button-image {
-  display: flex;
-  justify-content: center;
-  padding-right: 0.3vh;
-  width: 1.4vh;
+
 }
 
 
@@ -28,5 +28,9 @@
 
 }
 .img{
-  height: 1.6vh;
+  margin-left: -32%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
 }
