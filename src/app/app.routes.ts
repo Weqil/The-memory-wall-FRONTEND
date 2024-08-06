@@ -5,6 +5,7 @@ import { VeteransComponent } from './views/veterans/veterans.component';
 import { VeteranShowComponent } from './views/veteran-show/veteran-show.component';
 import { LoginComponent } from './views/login/login.component';
 import { CreateComponent } from './views/create/create.component';
+import { ContactsComponent } from './views/contacts/contacts.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { NgModule } from '@angular/core';
 export const routes: Routes = [
@@ -13,6 +14,7 @@ export const routes: Routes = [
     {path:'veterans/:id', component: VeteransComponent},
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path:'memory', component: MemoryPeopleComponent},
+    {path:'contacts', component: ContactsComponent},
     {path:'veteran/:id', component: VeteranShowComponent},
 
 
