@@ -1,5 +1,5 @@
-<div routerLink="/veteran/{{veteran.id}}" class="card">
-
+<div (click)="cardClick()" class="card">
+    <!-- routerLink="/veteran/{{veteran.id}}"  -->
 
     <ng-container *ngIf="veteran.photos.length > 0;">
         <ng-container *ngIf="!veteran.photos[0].local">

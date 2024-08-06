@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-back-button',
@@ -13,8 +13,12 @@ export class BackButtonComponent {
   constructor(private location: Location){
 
   }
+  @Input() notBack!:boolean
 
   back(): void {
-    this.location.back();
+    if(!this.notBack){
+      this.location.back();
+    }
+
   }
 }

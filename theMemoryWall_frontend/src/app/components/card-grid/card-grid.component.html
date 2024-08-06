@@ -1,6 +1,6 @@
-<div #grid class="card-grid">
+<div  #grid class="card-grid">
     <ng-container *ngFor="let veteran of veterans">
-        <app-card [veteran]="veteran"></app-card>
+        <app-card (cardEmitt)="cardClick($event)" [veteran]="veteran"></app-card>
     </ng-container>
  
 </div>

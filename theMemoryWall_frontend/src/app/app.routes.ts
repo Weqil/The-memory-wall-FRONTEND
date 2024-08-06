@@ -5,6 +5,8 @@ import { VeteransComponent } from './views/veterans/veterans.component';
 import { VeteranShowComponent } from './views/veteran-show/veteran-show.component';
 import { LoginComponent } from './views/login/login.component';
 import { CreateComponent } from './views/create/create.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { NgModule } from '@angular/core';
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path:'create', component: CreateComponent},

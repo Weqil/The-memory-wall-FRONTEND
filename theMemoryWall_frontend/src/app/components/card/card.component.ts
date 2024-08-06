@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IVeteran } from '../../models/veteran';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -19,9 +19,13 @@ export class CardComponent {
   ){}
 
 @Input() veteran!:IVeteran
+@Output() cardEmitt = new EventEmitter();
 public host:string = environment.backHost
 public port:string = environment.backPort
 public protocol:string = environment.backProtocol
+cardClick(){
+  this.cardEmitt.emit(this.veteran.id)
+}
 canceledRequest(){
   this.router.navigate([`veteran/${this.veteran.id}`]);
 }

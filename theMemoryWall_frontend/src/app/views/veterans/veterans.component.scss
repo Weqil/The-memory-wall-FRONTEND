@@ -263,3 +263,16 @@
     background: none;
     filter: brightness(0) saturate(100%) invert(70%) sepia(2%) saturate(0%) hue-rotate(274deg) brightness(97%) contrast(92%);
  }
+ .veteran-show-wrapper{
+    padding-left: 1vh;
+    position: fixed;
+    transform: translate(100vw);
+    padding-top: 5vh;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    top: 0;
+    .veteran-show-back{
+        
+    }
+ }
