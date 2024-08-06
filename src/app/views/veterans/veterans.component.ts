@@ -247,7 +247,7 @@ export class VeteransComponent  implements OnInit {
         setTimeout(()=>{
         content.style.transition = '0.3s'
         content.style.transform = 'translate(0vw)'
-        },400)
+        },300)
       } else {
       }
     })
