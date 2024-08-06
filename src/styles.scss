@@ -1,31 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'simple-keyboard/build/css/index.css';
 ::-webkit-scrollbar {
-    width: 0px; 
-    background: transparent;  
+    width: 0px;
+    background: transparent;
 }
 body,html{
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
 }
+.background{
+  background:url('assets/imgs/army-documents.png');
+  background-size:100vw 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 @media (orientation:portrait) {
+  .background{
+    background:url('assets/imgs/army-documents.png');
+    background-size:100vh 100%;
+    background-position: center;
+    background-repeat: no-repeat;}
     body{
         background:url('assets/imgs/army-documents.png');
         background-size:100vh 100%;
         background-position: center;
         background-repeat: no-repeat;
     }
-    
 
-.background{
-    background:url('assets/imgs/army-documents.png');
-    background-size:100vh 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
+
 .simple-keyboard.hg-theme-default {
-  
+
     .hg-theme-default .hg-row {
       display: flex;
       justify-content: center;
@@ -36,11 +42,11 @@ body,html{
     display: flex;
     justify-content: center;
 }
-  
+
   .hg-button.hg-functionBtn.hg-button-space{
       max-width: 80%;
   }
-  
+
   .hg-theme-default .hg-button {
       height: 3vh;
       font-family: 'gotham-medium';
@@ -63,20 +69,20 @@ body,html{
         background-position: center;
         background-repeat: no-repeat;
     }
-    
+
 .simple-keyboard.hg-theme-default {
-  
+
     .hg-theme-default .hg-row {
       display: flex;}
   }
-  
+
   .hg-button.hg-functionBtn.hg-button-space{
       max-width: 80%;
   }
-  
+
   .hg-theme-default .hg-button {
       height: 4vh;
-      
+
       font-family: 'gotham-medium';
       font-size: 1.3vh;
   }
