@@ -1,0 +1,9 @@
+.wrapper-background{
+    z-index: -1;
+    background: rgb(163, 163, 163);
+    background: linear-gradient(180deg, rgba(163, 163, 163, 0.5634628852) 0%, rgb(53 53 53 / 62%) 21%, rgb(0 0 0) 41%, rgba(14, 14, 14, 0.5942752101) 71%, rgba(0, 0, 0, 0.3505777311) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
