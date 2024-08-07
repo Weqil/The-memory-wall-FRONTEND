@@ -36,8 +36,11 @@ export class AppComponent {
    
   public title = 'theMemoryWall_frontend';
   public currentRout: string = ''
-  public show:boolean = this.activityService.showPlug.value;
+  public show:boolean = true;
   ngOnInit(): void {
-    
+    this.activityService.showPlug.subscribe(value => {
+      this.show = value
+      console.log(value)
+  })
   }
 }

@@ -7,12 +7,12 @@ import { BehaviorSubject } from 'rxjs';
 export class ActivityService {
 
   constructor() { }
-  public timeActive: number = 120;
+  public timeActive: number = 10;
   public wait:boolean = true;
   public showTime:BehaviorSubject<number> = new BehaviorSubject<number>(this.timeActive)
   public showPlug:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   startTime(func:()=>void) {
-    this.timeActive = 120;
+    this.timeActive = 10;
     if(this.wait){
       this.wait = false;
       this.showPlug.next(false) ;
