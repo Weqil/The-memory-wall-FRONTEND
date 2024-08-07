@@ -43,7 +43,7 @@
     font-family: 'gotham-medium';
 }
 .contacts-position-adress-map{
-    width: 35vh;
+    width: 100%;
     margin-top: 1vh;
     padding-left: 1vh;
     display: flex;
@@ -68,12 +68,14 @@
     margin-top: 0.5vh;
     border-radius: 1vh;
     background: rgb(0, 0, 0);
-    font-size: 0.8vh;
+    font-size: 0.5vh;
     color: #fff;
     font-family: 'gotham-medium';
 }
 .qrcode-wrapper{
-    max-width: 20%;
+    margin: auto;
+    padding-top: 1vh;
+    max-width: 12%;
 }
 .qrcode-image{
     max-width: 100%;

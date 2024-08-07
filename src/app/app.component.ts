@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ActivityComponent } from './components/activity/activity.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
+import { ActivityService } from './services/activity.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,6 +16,7 @@ import { ScrollService } from './services/scroll.service';
     HeaderComponent,
     ActivityComponent,
     FooterComponent,
+    CommonModule
     
   ],
   templateUrl: './app.component.html',
@@ -24,6 +27,7 @@ export class AppComponent {
   (
     private scrollService: ScrollService,
     private router: Router,
+    private activityService: ActivityService,
 
    ) 
    {
@@ -32,6 +36,7 @@ export class AppComponent {
    
   public title = 'theMemoryWall_frontend';
   public currentRout: string = ''
+  public show:boolean = this.activityService.showPlug.value;
   ngOnInit(): void {
     
   }

@@ -24,7 +24,10 @@
     </section>
    <div #showModal class="veteran-show-wrapper background">
         <div class="veteran-show-back">
-            <app-back-button (click)="hideShow(showModal)" [notBack]="true"></app-back-button>
+            <div class="back-button-wrapper">
+                <app-back-button (click)="hideShow(showModal)" [notBack]="true"></app-back-button>
+            </div>
+          
             <app-veteran-show *ngIf="veteranShowHero" [url]="url" (veteran)="veteranShowHero"></app-veteran-show>
         </div>
     </div>
