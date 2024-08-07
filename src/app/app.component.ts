@@ -40,7 +40,6 @@ export class AppComponent {
   ngOnInit(): void {
     this.activityService.showPlug.subscribe(value => {
       this.show = value
-      console.log(value)
-  })
+   })
   }
 }

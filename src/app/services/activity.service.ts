@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,36 +7,42 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ActivityService {
 
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
   public timeActive: number = 120;
   public wait:boolean = true;
-  public showTime:BehaviorSubject<number> = new BehaviorSubject<number>(this.timeActive)
-  public showPlug:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  public showPlug:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true)
+  public timerId:BehaviorSubject<any> = new BehaviorSubject<any>('')
+  public changeTime: BehaviorSubject<number> = new BehaviorSubject<number>(120)
+  public changeTimeStartValue = this.changeTime.value
   startTime(func:()=>void) {
-    this.timeActive = 120;
     if(this.wait){
-      this.wait = false;
-      this.showPlug.next(false) ;
-      let timerId = setInterval(() => {
-        if (this.timeActive != 0) {
-          this.showTime.next(this.timeActive);
-          this.timeActive--;
-          this.showPlug.next(false);
-        } else {
-          
-          this.showPlug.next(false);
-          this.wait = true;
-          func();
-          clearInterval(timerId);
-        }
-        
-        if (this.timeActive <= 10 && this.timeActive != 0) {
-          this.showPlug.next(true);
-        } else {
-          this.showPlug.next(false);
-        }
-      }, 1000);
+      this.timerId.next(setInterval(()=>{
+        this.changeTime.next(this.changeTime.value - 1);
+        console.log(this.changeTime.value)
+      },1000))
     }
-    
   }
+
+  checkTimer(){
+    this.changeTime.subscribe(()=>{
+      if(this.changeTime.value == 0){
+        clearInterval(this.timerId.value);
+        this.showPlug.next(true);
+        this.wait = true
+        this.changeTime.next(this.changeTimeStartValue)
+        this.router.navigate(['/home'])
+      }
+    })
+  }
+  restartTimer() {
+    this.showPlug.next(false);
+    this.wait = true;
+    this.changeTime.next(this.changeTimeStartValue)
+    clearInterval(this.timerId.value);
+    this.startTime(() => {})
+    this.checkTimer()
+  }
+  
 }
