@@ -17,10 +17,8 @@ export class ActivityComponent implements OnInit {
   public time:number = this.activityService.timeActive
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent): void {
-    let target = event.target as HTMLElement
-     this.activityService.startTime(()=>{
-      this.router.navigate(['/home'])
-    })
+    console.log('test')
+     this.activityService.restartTimer()
   }
 
   ngOnInit(): void {
@@ -28,15 +26,11 @@ export class ActivityComponent implements OnInit {
 
     this.activityService.showPlug.subscribe(value => {
         this.show = value
-       
     })
-    this.activityService.showTime.subscribe(value => {
-      this.time = this.activityService.showTime.value
-    })
-   
-    this.activityService.startTime(()=>{
 
-      this.router.navigate(['/home'])
+    this.activityService.changeTime.subscribe(value => {
+      this.time = this.activityService.changeTime.value
     })
+
   }
 }

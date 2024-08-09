@@ -2,15 +2,15 @@ header{
     padding-left: 1%;
     padding-top: 1vh;
     width: 100%;
-    height: 3vh;
+    height: 4.5vh;
     position: absolute;
-    z-index: 100;
+    z-index: 102;
     display: flex;
     background-color: #F5F4F3;
 }
 .logo{
     height: 150%;
-    margin-top: -9%;
+    margin-top: -7%;
 }
 .header-title{
     margin-left: 0.5vh;
@@ -18,7 +18,7 @@ header{
     margin-top: 0.1vh;
     font-family: 'gotham-bold';
     width: auto;
-    font-size: 1vh;
+    font-size: 2vh;
     
 }
 .city-title{
@@ -27,7 +27,7 @@ header{
     margin-top: -0.1vh;
     font-family: 'gotham-bold';
     width: auto;
-    font-size: 0.9vh;
+    font-size: 1.5vh;
 }
 .header-wrapper{
     display: flex;

@@ -1,11 +1,16 @@
-<div *ngIf="show" class="plug">
+<div *ngIf="time <= 10 && time > 0" class="plug">
     <div class="warning">
-        <p>Возвращение на главную через {{time-1}} секунд </p>
+        <p>Возвращение на главную через {{time}} секунд </p>
     </div>
 </div>
-<ng-container *ngIf="time == 1">
+<ng-container *ngIf="show">
     <div class="plug-video">
         <video class="video"  src="./assets/videos/fire2.mp4"  loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true"></video>
     </div>
-    <div class="plig-video_wrapper"></div>
+    <div class="plug-video_wrapper">
+        <div class="touched">
+            <img class="touched-icon" src="./assets/icons/touch-action.svg" alt="">
+            <p class="touched-text">Коснитесь экрана</p>
+        </div>
+    </div>
 </ng-container>

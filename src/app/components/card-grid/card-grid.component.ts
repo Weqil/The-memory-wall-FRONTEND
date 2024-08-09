@@ -17,6 +17,7 @@ import { ScrollService } from '../../services/scroll.service';
 export class CardGridComponent implements OnInit {
 
   @Input() veterans!:IVeteran[]
+  @Input() notFound: boolean = false
   @Output() scrollEdgeEvents = new EventEmitter();
   @Output() cardEmitt = new EventEmitter();
   @ViewChild('grid') grid!:ElementRef

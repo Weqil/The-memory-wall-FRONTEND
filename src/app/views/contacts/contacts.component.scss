@@ -1,0 +1,84 @@
+.rubric-name{
+    padding-top: 1vh;
+    color: #fff;
+    font-family: 'gotham-bold';
+    font-size:1.9vh;
+    width: 100%;
+    text-align: start;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+.rubric-name-text{
+    text-transform: uppercase;
+    max-width: 80vw;
+}
+.contacts-descripton{
+    margin-top: 1vh;
+    font-size: 1.2vh;
+    color: #fff;
+    font-family: 'gotham-medium';
+   
+    text-align: start;
+}
+.content-info{
+    padding-top: 4vh;
+    margin: auto;
+    max-width: 80vw;
+}
+.contacts-position-adress-text{
+    display: flex;
+    margin-top: 0.5vh;
+    color: #fff;
+    font-size: 1.1vh;
+    font-family: 'gotham-medium';
+}
+.contacts-position-adress-images-item{
+    max-width: 20%;
+}
+.contact-item{
+    margin-top: 0.5vh;
+    font-size: 1vh;
+    color: #fff;
+    font-family: 'gotham-medium';
+}
+.contacts-position-adress-map{
+    width: 100%;
+    margin-top: 1vh;
+    padding-left: 1vh;
+    display: flex;
+    align-items: center;
+    height: 19vh;
+    background-position: center;
+    background-size: cover;
+}
+.contacts-position-adress-map-wrapper{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    gap: 2vh;
+}
+.contacts-position-adress-images-item-mail{
+    max-width: 20%;
+    margin-top: 1vh;
+    margin-left: -1vh;
+}
+.qrcode-text{
+    text-align: center;
+    margin-top: 0.5vh;
+    border-radius: 1vh;
+    background: rgb(0, 0, 0);
+    font-size: 0.5vh;
+    color: #fff;
+    font-family: 'gotham-medium';
+}
+.qrcode-wrapper{
+    margin: auto;
+    padding-top: 1vh;
+    max-width: 12%;
+}
+.qrcode-image{
+    max-width: 100%;
+    border-radius: 0.2vh;
+    margin-bottom: -0.5vh;
+}
