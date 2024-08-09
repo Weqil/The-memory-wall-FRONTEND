@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'simple-keyboard/build/css/index.css';
+
+* {
+    user-select: none;
+}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -8,6 +12,7 @@ body,html{
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    user-select: none;
 }
 .background{
   background:url('assets/imgs/army-documents.png');
