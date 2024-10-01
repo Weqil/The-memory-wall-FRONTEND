@@ -5,8 +5,6 @@
 
    </div>
     <section class="content">
-
-
       <div class="back-button-wrapper">
         <app-back-button></app-back-button>
       </div>
@@ -18,9 +16,7 @@
             </span>
         </div>
     </ng-container>
-   
        <app-card-grid [notFound]="notFound" (cardEmitt)="openVeteranShow($event,showModal)" [veterans]="veteranArray" (scrollEdgeEvents)="paginateSubmit()"></app-card-grid>
-
     </section>
    <div #showModal class="veteran-show-wrapper background">
         <div class="veteran-show-back">
@@ -28,13 +24,10 @@
                 <app-back-button (click)="hideShow(showModal)" [notBack]="true"></app-back-button>
             </div>
           
-            <app-veteran-show *ngIf="veteranShowHero" [url]="url" (veteran)="veteranShowHero"></app-veteran-show>
+            <app-veteran-show *ngIf="veteranShowHero" [url]="url" [veteran]="veteranShowHero"></app-veteran-show>
         </div>
     </div>
-   
-
      <div>
-        
       <div class="letter-filter-wrapper">
         <div class="letter-filter">
             <div (click)="clearLetter()" class="clear-filter">
@@ -71,11 +64,8 @@
                       <div class="simple-keyboard"></div>
                   </div>
               </div>
-
-
           </div>
      </div>
 
-    
 </main>
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { Router, RouterLink } from '@angular/router';
 import { VeteransService } from '../../services/veterans.service';
@@ -9,7 +9,8 @@ import { IVeteran } from '../../models/veteran';
 import { RouterOutlet } from '@angular/router';
 import { catchError, of, Subject } from 'rxjs';
 import { BackButtonComponent } from "../../components/back-button/back-button.component";
-
+import { Sanitizer } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-veteran-show',
   standalone: true,
@@ -29,6 +30,7 @@ export class VeteranShowComponent implements OnInit  {
     private rout: ActivatedRoute,
     private scrollService: ScrollService,
     private router: Router,
+    private sanitizer: DomSanitizer
   )
    {
 
@@ -39,10 +41,20 @@ export class VeteranShowComponent implements OnInit  {
    public host:string = environment.backHost
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
+   avatarUrl:string = ''
 
-
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.veteran)
+    this.veteran.photos[0]? this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.photos[0].url : null
+    console.log(this.avatarUrl)
+    
+  }
+  clearDescription(){
+    return this.sanitizer.bypassSecurityTrustHtml(this.veteran.description)
+  }
 
   ngOnInit(): void {
+  
     // this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
     //   catchError((err: Error) => {
     //     console.log(err)

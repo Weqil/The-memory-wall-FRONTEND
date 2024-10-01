@@ -20,7 +20,6 @@ export class ActivityService {
     if(this.wait){
       this.timerId.next(setInterval(()=>{
         this.changeTime.next(this.changeTime.value - 1);
-        console.log(this.changeTime.value)
       },1000))
     }
   }

@@ -17,7 +17,6 @@ export class ActivityComponent implements OnInit {
   public time:number = this.activityService.timeActive
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent): void {
-    console.log('test')
      this.activityService.restartTimer()
   }
 

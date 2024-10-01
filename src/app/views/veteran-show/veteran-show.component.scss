@@ -22,11 +22,99 @@
 .pdf-wrapper-content{
   width: 80%;
   height: 63vh;
+
   margin-left: auto;
   margin-right: auto;
 }
 
+.last_name{
+  font-size: 3.5vw;
+  font-family: 'gotham-bold';
 
+}
+
+.content{
+  padding-top: 8vh;
+}
+.content-info{
+  margin: auto;
+  border: 1px solid #ffffff59;
+  background: #f3eee7;
+  max-width: 80vw;
+  min-height: 70vh;
+}
+.content-info_main_avatar-block_image{
+  height: 20vh;
+  border: 1vh solid #FDFCFA;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  margin-top: -3vh;
+}
+.content-info_main_avatar-block{
+  display: flex;
+  gap: 1.5vh;
+}
+.content-info_main_avatar-block_fio{
+  padding-top: 5vh;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  padding-bottom: 2vh;
+}
+.description{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1vh;
+
+  font-size: 1.5vw;
+  font-family: 'gotham-medium';
+
+}
+.years-of-life{
+  padding-top: 1.5vh;
+  font-size: 1.5vw;
+  display: flex;
+  gap: 0.3vh;
+  font-family: 'gotham-medium';
+
+}
+.birthday-place{
+  padding-top: 0.4vh;
+  font-size: 1.5vw;
+  font-family: 'gotham-medium';
+  padding-right: 0.3vh;
+
+}
+.birthday-place_address{
+  font-family: 'gotham-light';
+}
+.years-of-life_date{
+  font-family: 'gotham-light';
+}
+.content-info_main{
+  padding-left: 2vh;
+  padding-right: 1vh;
+}
+.first-name-and-middle-name{
+  padding-top: 0.2vh;
+  font-size: 3.5vw;
+  font-family: 'gotham-light';
+
+}
+
+.title-information-section{
+  text-transform: uppercase;
+  padding-top: 0.5vh;
+  border-bottom: 1px solid #000000a4;
+  width: 100%;
+  font-family: 'ds_moster';
+  font-size: 3.5vw;
+
+}
+.description_text{
+  font-size: 1.5vw;
+  font-family: 'gotham-medium';
+  color: #181717;
+}
 
 @media (orientation:portrait) {
  

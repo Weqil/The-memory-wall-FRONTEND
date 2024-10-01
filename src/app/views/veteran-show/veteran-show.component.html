@@ -1,5 +1,45 @@
 <section class="content">
-
+  <div class="content-info">
+      <div class="content-info_main">
+          <div class="content-info_main_avatar-block">
+            <img class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
+            <div class="content-info_main_avatar-block_fio">
+              <div class="last_name">
+                {{veteran.last_name}}
+              </div>
+              <div class="first-name-and-middle-name">
+                {{veteran.first_name}}
+                {{veteran.middle_name}}
+              </div>
+              <div class="years-of-life">
+                <span>Годы жизни:</span>
+                <span class="years-of-life_date">{{veteran.birthday + ' - ' + veteran.deathday}}</span>
+              </div>
+              <div class="birthday-place">
+                <span>Место рождения: </span>
+                <span class="birthday-place_address">Село Яблочное Хохольского района Воронежской области</span>
+              </div>
+            </div>
+          </div>
+          <div class="content-info_main_second-info">
+            <div class="description">
+              <div class="title-information-section">Воинское звание</div>
+            </div>
+              <div class="description">
+                <div class="title-information-section">Военная служба</div>
+                <div class="description_text" [innerHTML]="clearDescription()"></div>
+              </div>
+             
+              <div class="description">
+                <div class="title-information-section">Награды</div>
+              </div>
+              <div class="description">
+                <div class="title-information-section">Документы</div>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- 
   <div class="pdf-wrapper">
       <pdf-viewer
       class="pdf-wrapper-content"
@@ -7,6 +47,9 @@
       [render-text]="true"
       >
       </pdf-viewer>
+
+  </div> -->
+  <div class="main-content">
 
   </div>
 
