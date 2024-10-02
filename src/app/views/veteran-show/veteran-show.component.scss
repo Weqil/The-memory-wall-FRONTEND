@@ -41,12 +41,17 @@
   border: 1px solid #ffffff59;
   background: #f3eee7;
   max-width: 80vw;
-  min-height: 70vh;
+  max-height: 70vh;
+  min-height: 80vh;
 }
 .content-info_main_avatar-block_image{
   height: 20vh;
   border: 1vh solid #FDFCFA;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  max-width: 26vw;
+  object-fit: cover;
+  filter: grayscale(100%);
   margin-top: -3vh;
 }
 .content-info_main_avatar-block{
@@ -100,7 +105,10 @@
   font-family: 'gotham-light';
 
 }
-
+.content-info_main_second-info{
+  overflow-y: scroll;
+  max-height: 60vh;
+}
 .title-information-section{
   text-transform: uppercase;
   padding-top: 0.5vh;

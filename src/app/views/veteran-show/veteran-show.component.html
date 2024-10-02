@@ -13,7 +13,7 @@
               </div>
               <div class="years-of-life">
                 <span>Годы жизни:</span>
-                <span class="years-of-life_date">{{veteran.birthday + ' - ' + veteran.deathday}}</span>
+                <span class="years-of-life_date">{{veteran.birthday + ' - ' + veteran.deathday? veteran.deathday:''}}</span>
               </div>
               <div class="birthday-place">
                 <span>Место рождения: </span>
@@ -21,12 +21,13 @@
               </div>
             </div>
           </div>
-          <div class="content-info_main_second-info">
+          <div #scrollElement class="content-info_main_second-info">
             <div class="description">
               <div class="title-information-section">Воинское звание</div>
             </div>
               <div class="description">
                 <div class="title-information-section">Военная служба</div>
+                <div class="description_text" [innerHTML]="clearDescription()"></div>
                 <div class="description_text" [innerHTML]="clearDescription()"></div>
               </div>
              

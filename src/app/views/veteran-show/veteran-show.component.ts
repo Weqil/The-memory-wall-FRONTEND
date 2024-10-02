@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { Router, RouterLink } from '@angular/router';
 import { VeteransService } from '../../services/veterans.service';
@@ -38,6 +38,7 @@ export class VeteranShowComponent implements OnInit  {
 
    @Input() veteran!:IVeteran
    @Input() url!:string
+   @ViewChild('scrollElement') scrollElement!:ElementRef
    public host:string = environment.backHost
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
@@ -45,9 +46,15 @@ export class VeteranShowComponent implements OnInit  {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.veteran)
-    this.veteran.photos[0]? this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.photos[0].url : null
+    this.veteran.photos[0]? this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.photos[0].url : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.rubrics[0].image
     console.log(this.avatarUrl)
-    
+    if(this.scrollElement && this.scrollElement.nativeElement){
+      this.scrollElement.nativeElement.scrollTop = 0
+    }
+    //Возвращаю скролл после получения нового ветерана
+  }
+  setPlugAvatar(){
+
   }
   clearDescription(){
     return this.sanitizer.bypassSecurityTrustHtml(this.veteran.description)
