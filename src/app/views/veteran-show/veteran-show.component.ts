@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { Router, RouterLink } from '@angular/router';
 import { VeteransService } from '../../services/veterans.service';
@@ -11,6 +11,8 @@ import { catchError, of, Subject } from 'rxjs';
 import { BackButtonComponent } from "../../components/back-button/back-button.component";
 import { Sanitizer } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-veteran-show',
   standalone: true,
@@ -18,7 +20,9 @@ import { DomSanitizer } from '@angular/platform-browser';
     PdfViewerModule,
     RouterLink,
     RouterOutlet,
-    BackButtonComponent
+    CommonModule,
+    BackButtonComponent,
+    NgClass
 ],
   templateUrl: './veteran-show.component.html',
   styleUrl: './veteran-show.component.scss'
@@ -39,23 +43,49 @@ export class VeteranShowComponent implements OnInit  {
    @Input() veteran!:IVeteran
    @Input() url!:string
    @ViewChild('scrollElement') scrollElement!:ElementRef
+   @HostListener('document:click', ['$event'])
+    onClick(event: MouseEvent): void {
+      let target = event.target as HTMLElement
+      if(target.className == 'document-modal__active' || target.className == 'close-img'){
+        this.changeModal()
+      }
+
+    }
    public host:string = environment.backHost
+   showDocumentModal:boolean = false
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
    avatarUrl:string = ''
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.veteran)
-    this.veteran.photos[0]? this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.photos[0].url : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+this.veteran.rubrics[0].image
-    console.log(this.avatarUrl)
+    if( this.veteran.photo){
+      this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
+   
+    }else{
+      this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.protocol+'://'+this.host+':'+this.port+this.veteran.rubrics[0].image 
+    }
     if(this.scrollElement && this.scrollElement.nativeElement){
       this.scrollElement.nativeElement.scrollTop = 0
     }
     //Возвращаю скролл после получения нового ветерана
+    this.showDocumentModal = false
+    //Если модалка с документом открыта - закрываю
   }
   setPlugAvatar(){
 
   }
+
+  checkPhoto(url:string){
+    let rightUrl = ''
+    url.includes('http') ? this.avatarUrl = rightUrl = url : this.protocol + '://' + this.host+ ':' + this.port + '/storage/' + url
+    return rightUrl
+  }
+
+  changeModal(){
+    this.showDocumentModal =!this.showDocumentModal
+  }
+
   clearDescription(){
     return this.sanitizer.bypassSecurityTrustHtml(this.veteran.description)
   }

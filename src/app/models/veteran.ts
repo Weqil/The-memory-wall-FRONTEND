@@ -8,8 +8,10 @@ export interface IVeteran {
     last_name: string;
     birthday:string;
     birthday_place:string;
-    photos:IPhoto[];
+    photo:string;
     deathday:string;
+    medals:any[];
+    rank:string;
     description:string;
     war_id:string;
     military_rank:string;

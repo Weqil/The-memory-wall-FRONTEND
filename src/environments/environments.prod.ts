@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
     backProtocol: 'https',
-    backHost: 'mlcity.ru',
-    backPort: '3443',
+    backHost: 'api-wall.vokrug.city',
+    backPort: '443',
   };

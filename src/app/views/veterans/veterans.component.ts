@@ -231,7 +231,7 @@ export class VeteransComponent  implements OnInit {
  
   }
   openVeteranShow(event:any, content:HTMLElement){
-
+    console.log(event)
     this.veteranShowId = event
     this.veteransService.getVeteranById(event).pipe(
       catchError((err: Error) => {
@@ -240,8 +240,9 @@ export class VeteransComponent  implements OnInit {
       })
     )
     .subscribe((response: any) => {
-      if (response.hero) {
-        this.veteranShowHero = response.hero
+      console.log(response)
+      if (response.heroes) {
+        this.veteranShowHero = response.heroes
         this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
         content.style.display = 'block'
         setTimeout(()=>{
@@ -257,6 +258,7 @@ export class VeteransComponent  implements OnInit {
   }
   getRubric(){
     this.rubricService.getRubricById(this.veteransShowUrl).pipe().subscribe((res:any)=>{
+      console.log(res)
     this.rubric = res.rubric
     })
   }

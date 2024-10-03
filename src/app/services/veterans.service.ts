@@ -15,15 +15,15 @@ export class VeteransService {
   ) { }
 
   getVeteranById(id: number) {
-    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero/${id}`);
+    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/heroes/${id}`);
 
   }
   getVeterans(searchString: string) {
 
-    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero?full_name= ${searchString}`);
+    return this.http.get(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/heroes?full_name= ${searchString}`);
   }
 
   getVeteransByRubricId(params: IQuery){
-    return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/hero`, { params: { ...params } });
+    return this.http.get<any>(`${environment.backProtocol}://${environment.backHost}:${environment.backPort}/api/heroes`, { params: { ...params } });
   }
 }

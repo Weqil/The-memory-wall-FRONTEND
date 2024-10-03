@@ -1,8 +1,18 @@
+<div [ngClass]="{'document-modal':!showDocumentModal,'document-modal__active':showDocumentModal,  }">
+  <div class="document-modal-image_wrapper">
+    <img src="" alt="" class="document-modal-image">
+    <img src="/assets/icons/clear.svg" alt="" class="close-img">
+  </div>
+
+  
+</div>
+<!-- Модалка с документом -->
 <section class="content">
   <div class="content-info">
       <div class="content-info_main">
           <div class="content-info_main_avatar-block">
-            <img class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
+            <img *ngIf="veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
+            <img style="filter: grayscale(100%);" *ngIf="!veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
             <div class="content-info_main_avatar-block_fio">
               <div class="last_name">
                 {{veteran.last_name}}
@@ -17,29 +27,44 @@
               </div>
               <div class="birthday-place">
                 <span>Место рождения: </span>
-                <span class="birthday-place_address">Село Яблочное Хохольского района Воронежской области</span>
+                <span class="birthday-place_address">{{veteran.birthday_place}}</span>
               </div>
             </div>
           </div>
           <div #scrollElement class="content-info_main_second-info">
             <div class="description">
               <div class="title-information-section">Воинское звание</div>
+              <div class="description_text">
+                {{veteran.rank}}
+              </div>
             </div>
               <div class="description">
                 <div class="title-information-section">Военная служба</div>
                 <div class="description_text" [innerHTML]="clearDescription()"></div>
-                <div class="description_text" [innerHTML]="clearDescription()"></div>
               </div>
              
-              <div class="description">
+              <div *ngIf="veteran.medals && veteran.medals.length" class="description">
                 <div class="title-information-section">Награды</div>
+                <div class="medals-container">
+                  <div class="medal" *ngFor="let medal of veteran.medals">
+                    <img class="medal_img" [src]="checkPhoto(medal.image)" alt="">
+                    <div class="medal_name">{{medal.name}}</div>
+                  </div>
+                  </div>
+                </div>
               </div>
               <div class="description">
                 <div class="title-information-section">Документы</div>
+                <div class="document-container">
+                  <div (click)="changeModal()" class="document">
+                    <img class="document_img" src="" alt="">
+                    <div class="document-name">Документик</div>
+                  </div>
+                </div>
               </div>
           </div>
       </div>
-  </div>
+  
 <!-- 
   <div class="pdf-wrapper">
       <pdf-viewer
@@ -55,5 +80,7 @@
   </div>
 
 </section>
+
+
 
 

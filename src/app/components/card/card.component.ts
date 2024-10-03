@@ -26,6 +26,12 @@ public protocol:string = environment.backProtocol
 cardClick(){
   this.cardEmitt.emit(this.veteran.id)
 }
+
+checkUrl(url:string){
+  let formatingUrl = url
+  url.includes('http') ? formatingUrl = url : formatingUrl = this.protocol+'://'+this.host+':'+this.port+ '/storage/' +this.veteran.photo 
+  return formatingUrl
+}
 canceledRequest(){
   this.router.navigate([`veteran/${this.veteran.id}`]);
 }

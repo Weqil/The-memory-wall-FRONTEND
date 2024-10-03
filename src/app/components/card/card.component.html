@@ -1,19 +1,14 @@
 <div (click)="cardClick()" class="card">
     <!-- routerLink="/veteran/{{veteran.id}}"  -->
 
-    <ng-container *ngIf="veteran.photos.length > 0;">
-        <ng-container *ngIf="!veteran.photos[0].local">
-            <div style="background-image: url('{{veteran.photos[0].url}}');" class="card-header"></div>
+    <ng-container *ngIf="veteran.photo">
+        <ng-container>
+            <div style="background-image: url('{{ checkUrl(veteran.photo)}}');" class="card-header"></div>
         </ng-container>
-
-        <ng-container *ngIf="veteran.photos[0].local">
-            <div style="background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.photos[0].url}}');" class="card-header"></div>
-        </ng-container>
-
 
     </ng-container >
 
-    <ng-container *ngIf="!veteran.photos.length">
+    <ng-container *ngIf="!veteran.photo || !veteran.photo.length">
         <div *ngIf="!veteran.rubrics.length" style="background-image: url('assets/imgs/nophoto.jpg');" class="card-header"></div>
         <div *ngIf="veteran.rubrics.length" style="filter: grayscale(100%); background-image: url('{{protocol}}://{{host}}:{{port}}{{veteran.rubrics[0].image}}');" class="card-header"></div>
     </ng-container >

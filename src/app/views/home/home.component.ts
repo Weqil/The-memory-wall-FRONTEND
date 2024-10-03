@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   public rubrics?:IRubrics[]
   getRubric():void{
     this.rubricService.getRubric(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((data) => {
-      this.rubrics = data.rubrics;
+      this.rubrics = data.rubric;
     });
   }
 
