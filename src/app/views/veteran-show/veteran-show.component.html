@@ -1,6 +1,6 @@
 <div [ngClass]="{'document-modal':!showDocumentModal,'document-modal__active':showDocumentModal,  }">
   <div class="document-modal-image_wrapper">
-    <img src="" alt="" class="document-modal-image">
+    <img [src]="documentModalImageUrl" alt="" class="document-modal-image">
     <img src="/assets/icons/clear.svg" alt="" class="close-img">
   </div>
 
@@ -47,18 +47,17 @@
                 <div class="title-information-section">Награды</div>
                 <div class="medals-container">
                   <div class="medal" *ngFor="let medal of veteran.medals">
-                    <img class="medal_img" [src]="checkPhoto(medal.image)" alt="">
+                    <img class="medal_img" [src]="checkUrl(medal.image)" alt="">
                     <div class="medal_name">{{medal.name}}</div>
                   </div>
                   </div>
                 </div>
               </div>
-              <div class="description">
+              <div *ngIf="veteran.honors && veteran.honors.length" class="description">
                 <div class="title-information-section">Документы</div>
                 <div class="document-container">
-                  <div (click)="changeModal()" class="document">
-                    <img class="document_img" src="" alt="">
-                    <div class="document-name">Документик</div>
+                  <div *ngFor="let document of veteran.honors" (click)="setModalImageDocument(checkUrl(document.image))" (click)="changeModal()" class="document">
+                    <img class="document_img" [src]="checkUrl(document.image)" alt="">
                   </div>
                 </div>
               </div>

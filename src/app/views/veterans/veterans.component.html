@@ -13,10 +13,12 @@
         <div class="rubric-name">
             <span>
               {{rubric.subtitle}}
+           
             </span>
         </div>
     </ng-container>
        <app-card-grid [notFound]="notFound" (cardEmitt)="openVeteranShow($event,showModal)" [veterans]="veteranArray" (scrollEdgeEvents)="paginateSubmit()"></app-card-grid>
+      
     </section>
    <div #showModal class="veteran-show-wrapper background">
         <div class="veteran-show-back">

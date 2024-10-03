@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  backProtocol: 'http',
-  backHost: 'localhost',
-  backPort: '8000',
+  backProtocol: 'https',
+  backHost: 'api-wall.vokrug.city',
+  backPort: '443',
 };

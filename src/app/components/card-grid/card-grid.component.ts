@@ -3,12 +3,14 @@ import { CardComponent } from '../card/card.component';
 import { IVeteran } from '../../models/veteran';
 import { CommonModule } from '@angular/common';
 import { ScrollService } from '../../services/scroll.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 @Component({
   selector: 'app-card-grid',
   standalone: true,
   imports: [
     CardComponent,
-    CommonModule
+    CommonModule,
+    NgxUiLoaderModule
   ],
   templateUrl: './card-grid.component.html',
   styleUrl: './card-grid.component.scss'

@@ -5,5 +5,5 @@
     <ng-container *ngFor="let veteran of veterans">
         <app-card (cardEmitt)="cardClick($event)" [veteran]="veteran"></app-card>
     </ng-container>
-
+    <ngx-ui-loader [loaderId]="'loader-03'"></ngx-ui-loader>
 </div>

@@ -17,5 +17,6 @@ export interface IVeteran {
     military_rank:string;
     reward:any[];
     rubrics:IRubrics[];
+    honors:any[];
     file_name: string;
 }

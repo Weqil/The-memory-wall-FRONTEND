@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
 import { ActivityService } from './services/activity.service';
 import { CommonModule } from '@angular/common';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     ActivityComponent,
     FooterComponent,
+    NgxUiLoaderModule,
     CommonModule
     
   ],

@@ -13,6 +13,7 @@ import { Sanitizer } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgClass } from '@angular/common';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-veteran-show',
   standalone: true,
@@ -34,7 +35,8 @@ export class VeteranShowComponent implements OnInit  {
     private rout: ActivatedRoute,
     private scrollService: ScrollService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private ngxUiLoaderService: NgxUiLoaderService
   )
    {
 
@@ -55,6 +57,7 @@ export class VeteranShowComponent implements OnInit  {
    showDocumentModal:boolean = false
    public port:string = environment.backPort
    public protocol:string = environment.backProtocol
+   documentModalImageUrl:string = ''
    avatarUrl:string = ''
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -82,8 +85,17 @@ export class VeteranShowComponent implements OnInit  {
     return rightUrl
   }
 
+  checkUrl(url:string){
+    let formatingUrl = url
+    url.includes('http') ? formatingUrl = url : formatingUrl = this.protocol+'://'+this.host+':'+this.port+ '/storage/' + url
+    return formatingUrl
+  }
+
   changeModal(){
     this.showDocumentModal =!this.showDocumentModal
+  }
+  setModalImageDocument(url:string){
+    this.documentModalImageUrl = url
   }
 
   clearDescription(){

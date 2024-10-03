@@ -21,6 +21,9 @@ import { BackButtonComponent } from "../../components/back-button/back-button.co
 import { RouteReuseStrategy } from '@angular/router';
 import { VeteranShowComponent } from '../veteran-show/veteran-show.component';
 import { environment } from '../../../environments/environments';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ActivityService } from '../../services/activity.service';
 @Component({
   selector: 'app-veterans',
   standalone: true,
@@ -33,6 +36,8 @@ import { environment } from '../../../environments/environments';
     LetterComponent,
     ReactiveFormsModule,
     VeteranShowComponent,
+    NgxUiLoaderModule,
+   
     BackButtonComponent
 ],
   providers: [
@@ -52,7 +57,10 @@ export class VeteransComponent  implements OnInit {
       private route:ActivatedRoute,
       private queryBuilderService: QueryBuilderService,
       private filterService: FilterService,
-      private rubricService: RubricService
+      private rubricService: RubricService,
+      private ngxUiLoaderService: NgxUiLoaderService,
+      private activityService: ActivityService,
+    
     ){}
 
     @ViewChild('test') test!:ElementRef
@@ -75,7 +83,7 @@ export class VeteransComponent  implements OnInit {
     public port:string = environment.backPort
     public protocol:string = environment.backProtocol
     public url!:string
-
+    
     ngAfterViewInit() {
       this.keyboard = new Keyboard({
         onChange: input => this.onChange(input),
@@ -154,10 +162,13 @@ export class VeteransComponent  implements OnInit {
 
   getVeteransByRubricId(){
     if (this.wait) {
+      this.ngxUiLoaderService.startBackgroundLoader('loader-03')
       if(localStorage.getItem('rubric')){
         this.wait = false
         //Добавил проверку для того что бы не было багов с пустым локал сторедж
           this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe(takeUntil(this.destroy$)).subscribe((res:any)=>{
+            this.ngxUiLoaderService.stopBackgroundLoader('loader-03')
+          this.ngxUiLoaderService.stop()
           this.veteranArray.push(...res.heroes.data);
           if(this.veteranArray.length == 0){
             this.notFound = true
@@ -231,6 +242,7 @@ export class VeteransComponent  implements OnInit {
  
   }
   openVeteranShow(event:any, content:HTMLElement){
+    this.ngxUiLoaderService.start()
     console.log(event)
     this.veteranShowId = event
     this.veteransService.getVeteranById(event).pipe(
@@ -240,6 +252,7 @@ export class VeteransComponent  implements OnInit {
       })
     )
     .subscribe((response: any) => {
+      this.ngxUiLoaderService.stop()
       console.log(response)
       if (response.heroes) {
         this.veteranShowHero = response.heroes
@@ -263,6 +276,9 @@ export class VeteransComponent  implements OnInit {
     })
   }
   ngOnInit(): void {
+    if(!this.activityService.showPlug.value){
+      this.ngxUiLoaderService.start()
+    }
     this.getRubric()
     this.scrollService.scrollStart()
     this.paginateSubmit()
