@@ -23,9 +23,9 @@
               </div>
               <div class="years-of-life">
                 <span>Годы жизни:</span>
-                <span class="years-of-life_date">{{veteran.birthday + ' - ' + veteran.deathday? veteran.deathday:''}}</span>
+                <span class="years-of-life_date">{{veteran.birthday}}  {{'  '+ veteran.deathday? veteran.deathday:''}}</span>
               </div>
-              <div class="birthday-place">
+              <div *ngIf="veteran.birthday_place" class="birthday-place">
                 <span>Место рождения: </span>
                 <span class="birthday-place_address">{{veteran.birthday_place}}</span>
               </div>
@@ -47,7 +47,7 @@
                 <div class="title-information-section">Награды</div>
                 <div class="medals-container">
                   <div class="medal" *ngFor="let medal of veteran.medals">
-                    <img class="medal_img" [src]="checkUrl(medal.image)" alt="">
+                    <img *ngIf="medal.image" class="medal_img" [src]="checkUrl(medal.image)" alt="">
                     <div class="medal_name">{{medal.name}}</div>
                   </div>
                   </div>

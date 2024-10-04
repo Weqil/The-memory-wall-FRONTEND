@@ -182,6 +182,7 @@ export class VeteransComponent  implements OnInit {
         this.wait = false
         this.filterService.setRubricIds(this.veteransShowUrl)
         this.veteransService.getVeteransByRubricId(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((res:any)=>{
+          this.ngxUiLoaderService.stop()
           this.veteranArray.push(...res.heroes.data);
           this.wait = !this.wait
           this.queryBuilderService.setPaginateVeterans(res.heroes.next_cursor)
@@ -243,7 +244,6 @@ export class VeteransComponent  implements OnInit {
   }
   openVeteranShow(event:any, content:HTMLElement){
     this.ngxUiLoaderService.start()
-    console.log(event)
     this.veteranShowId = event
     this.veteransService.getVeteranById(event).pipe(
       catchError((err: Error) => {
@@ -253,7 +253,7 @@ export class VeteransComponent  implements OnInit {
     )
     .subscribe((response: any) => {
       this.ngxUiLoaderService.stop()
-      console.log(response)
+
       if (response.heroes) {
         this.veteranShowHero = response.heroes
         this.url = `${this.protocol}://${this.host}:${this.port}/api/files/pdf/${this.veteranShowHero.file_name}`
@@ -271,12 +271,12 @@ export class VeteransComponent  implements OnInit {
   }
   getRubric(){
     this.rubricService.getRubricById(this.veteransShowUrl).pipe().subscribe((res:any)=>{
-      console.log(res)
     this.rubric = res.rubric
     })
   }
   ngOnInit(): void {
-    if(!this.activityService.showPlug.value){
+    if(!this.activityService.showPlug.value && this.veteranArray.length == 0){
+      console.log(this.veteranArray)
       this.ngxUiLoaderService.start()
     }
     this.getRubric()

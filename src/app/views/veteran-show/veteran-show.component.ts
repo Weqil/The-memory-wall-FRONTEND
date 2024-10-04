@@ -61,12 +61,11 @@ export class VeteranShowComponent implements OnInit  {
    avatarUrl:string = ''
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.veteran)
-    if( this.veteran.photo){
-      this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
+    if(this.veteran.photo){
    
+      this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
     }else{
-      this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.protocol+'://'+this.host+':'+this.port+this.veteran.rubrics[0].image 
+      this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+'/storage/'+this.veteran.rubrics[0].image 
     }
     if(this.scrollElement && this.scrollElement.nativeElement){
       this.scrollElement.nativeElement.scrollTop = 0
@@ -87,7 +86,9 @@ export class VeteranShowComponent implements OnInit  {
 
   checkUrl(url:string){
     let formatingUrl = url
-    url.includes('http') ? formatingUrl = url : formatingUrl = this.protocol+'://'+this.host+':'+this.port+ '/storage/' + url
+    if(url){
+      url.includes('http') ? formatingUrl = url : formatingUrl = this.protocol+'://'+this.host+':'+this.port+ '/storage/' + url
+    }
     return formatingUrl
   }
 

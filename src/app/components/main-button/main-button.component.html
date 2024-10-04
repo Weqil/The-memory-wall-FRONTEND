@@ -1,13 +1,21 @@
-<ng-container *ngIf="rubric.name !== 'Память народа'">
-    <div (click)="setFilter()" routerLink="/veterans/{{rubric.id }}" [ngClass]= "{'button-wrapper': !reversed,'button-wrapper__reverse':reversed}">
-        <div style="background-image: url('{{protocol}}://{{host}}:{{port}}/storage/{{rubric.image}}');" [ngClass]= "{'button-grid-item': !reversed,'button-grid-item__reversed':reversed}" class=""></div>
-        <div [ngClass]= "{'button-grid-item_text': !reversed,'button-grid-item_text__reversed':reversed}" class="">{{rubric.name }}</div>
+<ng-container *ngIf="rubric.id != 4">
+    <div (click)="setFilter()" routerLink="/veterans/{{rubric.id }}" class="button_wrapper__container">
+        <div  [ngClass]= "{'button-wrapper': !reversed,'button-wrapper__reverse':reversed}">
+            <div style="background-image: url('{{protocol}}://{{host}}:{{port}}/storage/{{rubric.image}}');" [ngClass]= "{'button-grid-item': !reversed,'button-grid-item__reversed':reversed}" class=""></div>
+            <div [ngClass]= "{'button-grid-item_text': !reversed,'button-grid-item_text__reversed':reversed}" class="">{{rubric.descriptions }}</div>
+           
+        </div>
     </div>
+  
 </ng-container>
 
-<ng-container *ngIf="rubric.name == 'Память народа'">
-    <div (click)="setFilter(); goToRemember()" [ngClass]= "{'button-wrapper': !reversed,'button-wrapper__reverse':reversed}">    
-        <div style="background-image: url('{{protocol}}://{{host}}:{{port}}/storage/{{rubric.image}}');" [ngClass]= "{'button-grid-item': !reversed,'button-grid-item__reversed':reversed}"></div>
-        <div [ngClass]= "{'button-grid-item_text': !reversed,'button-grid-item_text__reversed':reversed}">{{rubric.name }}</div>
+<ng-container *ngIf="rubric.id == 4">
+    <div (click)=" goToRemember()" class="button_wrapper__container">
+
+        <div  [ngClass]= "{'button-wrapper': !reversed,'button-wrapper__reverse':reversed}">    
+            <div style="background-image: url('{{protocol}}://{{host}}:{{port}}/storage/{{rubric.image}}');" [ngClass]= "{'button-grid-item': !reversed,'button-grid-item__reversed':reversed}"></div>
+            <div [ngClass]= "{'button-grid-item_text': !reversed,'button-grid-item_text__reversed':reversed}">{{rubric.descriptions }}</div>
+        </div>
     </div>
+
 </ng-container>

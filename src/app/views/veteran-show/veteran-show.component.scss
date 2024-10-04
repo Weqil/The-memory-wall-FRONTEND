@@ -124,7 +124,7 @@
 }
 .medal_img{
   height: 3vh;
-  object-fit: cover;
+  object-fit: scale-down;
   width: 5vw;
 }
 .medals-container{
@@ -132,7 +132,6 @@
   display: flex;
   gap: 1vh;
   flex-wrap: wrap;
-  justify-content: center;
   max-width: 100%;
 }
 .medal_name{
