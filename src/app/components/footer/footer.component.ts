@@ -21,6 +21,11 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((events:any)=>{
       this.url = events.url
+      if(this.url){
+        this.url.includes('/veteran/' ) ? this.url = '/veteran/' : ''
+      }
+
+      console.log(this.url)
     })
   }
 }

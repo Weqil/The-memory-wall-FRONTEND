@@ -1,82 +1,73 @@
 <div [ngClass]="{'document-modal':!showDocumentModal,'document-modal__active':showDocumentModal,  }">
   <div class="document-modal-image_wrapper">
     <img [src]="documentModalImageUrl" alt="" class="document-modal-image">
-    <img src="/assets/icons/clear.svg" alt="" class="close-img">
+    <div class="close-img__wrapper">
+      <img src="/assets/icons/clear.svg" alt="" class="close-img">
+    </div>
   </div>
-
-  
 </div>
+
 <!-- Модалка с документом -->
 <section class="content">
   <div class="content-info">
-      <div class="content-info_main">
-          <div class="content-info_main_avatar-block">
-            <img *ngIf="veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
-            <img style="filter: grayscale(100%);" *ngIf="!veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
-            <div class="content-info_main_avatar-block_fio">
-              <div class="last_name">
-                {{veteran.last_name}}
-              </div>
-              <div class="first-name-and-middle-name">
-                {{veteran.first_name}}
-                {{veteran.middle_name}}
-              </div>
-              <div class="years-of-life">
-                <span>Годы жизни:</span>
-                <span class="years-of-life_date">{{veteran.birthday}}  {{'  '+ veteran.deathday? veteran.deathday:''}}</span>
-              </div>
-              <div *ngIf="veteran.birthday_place" class="birthday-place">
-                <span>Место рождения: </span>
-                <span class="birthday-place_address">{{veteran.birthday_place}}</span>
-              </div>
-            </div>
-          </div>
-          <div #scrollElement class="content-info_main_second-info">
-            <div *ngIf="veteran.rank" class="description">
-              <div class="title-information-section">Воинское звание</div>
-              <div class="description_text">
-                {{veteran.rank}}
-              </div>
-            </div>
-              <div class="description">
-                <div class="title-information-section">Военная служба</div>
-                <div class="description_text" [innerHTML]="clearDescription()"></div>
-              </div>
-             
-              <div *ngIf="veteran.medals && veteran.medals.length" class="description">
-                <div class="title-information-section">Награды</div>
-                <div class="medals-container">
-                  <div class="medal" *ngFor="let medal of veteran.medals">
-                    <img *ngIf="medal.image" class="medal_img" [src]="checkUrl(medal.image)" alt="">
-                    <div class="medal_name">{{medal.name}}</div>
-                  </div>
-                  </div>
+        <div *ngIf="veteran" class="content-info_main">
+            <div class="content-info_main_avatar-block">
+              <img *ngIf="veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
+              <img style="filter: grayscale(100%);" *ngIf="!veteran.photo" class="content-info_main_avatar-block_image" [src]="this.avatarUrl" alt="">
+              <div class="content-info_main_avatar-block_fio">
+                <div class="last_name">
+                  {{veteran.last_name}}
+                </div>
+                <div class="first-name-and-middle-name">
+                  {{veteran.first_name}}
+                  {{veteran.middle_name}}
+                </div>
+                <div class="years-of-life">
+                  <span>Годы жизни:</span>
+                  <span class="years-of-life_date">{{veteran.birthday}}  {{'  '+ veteran.deathday? veteran.deathday:''}}</span>
+                </div>
+                <div *ngIf="veteran.birthday_place" class="birthday-place">
+                  <span>Место рождения: </span>
+                  <span class="birthday-place_address">{{veteran.birthday_place}}</span>
                 </div>
               </div>
-              <div *ngIf="veteran.honors && veteran.honors.length" class="description">
-                <div class="title-information-section">Документы</div>
-                <div class="document-container">
-                  <div *ngFor="let document of veteran.honors" (click)="setModalImageDocument(checkUrl(document.image))" (click)="changeModal()" class="document">
-                    <img class="document_img" [src]="checkUrl(document.image)" alt="">
-                  </div>
+            </div>
+            <div #scrollElement class="content-info_main_second-info">
+              <div *ngIf="veteran.rank" class="description">
+                <div class="title-information-section">Воинское звание</div>
+                <div class="description_text">
+                  {{veteran.rank}}
                 </div>
               </div>
-          </div>
+                <div class="description">
+                  <div class="title-information-section">Военная служба</div>
+                  <div class="description_text" [innerHTML]="clearDescription()"></div>
+                </div>
+
+                <div *ngIf="veteran.medals && veteran.medals.length" class="description">
+                  <div class="title-information-section">Награды</div>
+                  <div class="medals-container">
+                    <div class="medal" *ngFor="let medal of veteran.medals">
+                      <img *ngIf="medal.image" class="medal_img" [src]="checkUrl(medal.image)" alt="">
+                      <div class="medal_name">{{medal.name}}</div>
+                    </div>
+                    </div>
+                </div>
+
+                  <div *ngIf="veteran.honors && veteran.honors.length" class="description">
+                    <div class="title-information-section">Документы</div>
+                    <div class="document-container">
+                      <div *ngFor="let document of veteran.honors" (click)="setModalImageDocument(checkUrl(document.image))" (click)="changeModal()" class="document">
+                        <img class="document_img" [src]="checkUrl(document.image)" alt="">
+                      </div>
+                    </div>
+                  </div>
+       
+                </div>
+              
+        </div>
       </div>
-  
-<!-- 
-  <div class="pdf-wrapper">
-      <pdf-viewer
-      class="pdf-wrapper-content"
-      [src]="url"
-      [render-text]="true"
-      >
-      </pdf-viewer>
 
-  </div> -->
-  <div class="main-content">
-
-  </div>
 
 </section>
 

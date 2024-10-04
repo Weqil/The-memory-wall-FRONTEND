@@ -34,7 +34,7 @@
 }
 
 .content{
-  padding-top: 8vh;
+  padding-top: 13vh;
 }
 .content-info{
   margin: auto;
@@ -155,11 +155,14 @@
 }
 .document_img{
   width: 12vw;
-  height: 8vh;
+  object-fit: cover;
+  height: 12vh;
 }
+
 .document-modal-image_wrapper{
   width: 46vw;
   height: 40vh;
+  object-fit: cover;
   position: relative;
 }
 @media (orientation:portrait) {
@@ -169,7 +172,7 @@
  .document-modal{
 
   width: 100%;
-  height: 100vh;
+  height: 0vh;
   transition: 0.3s all;
   transform: translateX(500%);
   position: absolute;
@@ -184,7 +187,8 @@
  .document-modal__active{
   background: #000000cb;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   transition: 0.3s all;
   opacity: 1;
   transform: translateX(0%);
@@ -200,16 +204,21 @@
  .document-modal-image{
   width: 46vw;
   height: 40vh;
+  object-fit: cover;
   background: #fff;
  }
  .close-img{
-  position: absolute;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
   width: 4vw;
-  top: 1vh;
-  right: 2vw;
   width: 6vw;
+
+ }
+ .close-img__wrapper{
+  position: absolute;
+  background: rgb(148, 5, 5);
   top: 0.5vh;
-  right: 1.5vw;
+  border-radius: 50%;
+  right: 2vw;
  }
  .veteran-show-wrapper{
   padding-left: 1vh;

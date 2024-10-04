@@ -1,4 +1,4 @@
-<footer>
+<footer *ngIf="url !== '/veteran/'">
         <div class="flex-item_1">никто не забыт</div>
         <div class="flex-item_2">ничто не забыто</div>
         <span *ngIf="url !== '/home' && url !== '/contacts' " routerLink="/contacts" class="contacts-link">Как сюда добавить или изменить информацию?</span>

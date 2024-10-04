@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ActivityService } from '../../services/activity.service';
 @Component({
   selector: 'app-veteran-show',
   standalone: true,
@@ -36,7 +37,9 @@ export class VeteranShowComponent implements OnInit  {
     private scrollService: ScrollService,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private ngxUiLoaderService: NgxUiLoaderService
+    private ngxUiLoaderService: NgxUiLoaderService,
+    private activityService: ActivityService
+
   )
    {
 
@@ -61,23 +64,49 @@ export class VeteranShowComponent implements OnInit  {
    avatarUrl:string = ''
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.veteran.photo){
-   
-      this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
+    if(this.veteran){
+      if(this.veteran.photo){
+        this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
+      }else{
+        this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+'/storage/'+this.veteran.rubrics[0].image 
+      }
+      if(this.scrollElement && this.scrollElement.nativeElement){
+        this.scrollElement.nativeElement.scrollTop = 0
+      }
+      //Возвращаю скролл после получения нового ветерана
+      this.showDocumentModal = false
+      //Если модалка с документом открыта - закрываю
     }else{
-      this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+'/storage/'+this.veteran.rubrics[0].image 
+      this.getVeteran()
     }
-    if(this.scrollElement && this.scrollElement.nativeElement){
-      this.scrollElement.nativeElement.scrollTop = 0
-    }
-    //Возвращаю скролл после получения нового ветерана
-    this.showDocumentModal = false
-    //Если модалка с документом открыта - закрываю
+    
   }
   setPlugAvatar(){
 
   }
 
+  getVeteran(){
+    this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
+      catchError((err: Error) => {
+        console.log(err)
+
+        return of("Error:" + err.message)
+      })
+    )
+    .subscribe((response: any) => {
+      console.log(response)
+      if (response.heroes) {
+        this.veteran = response.heroes
+        if(this.veteran.photo){
+          this.veteran.photo.includes('http') ? this.avatarUrl = this.veteran.photo : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port + '/storage/' + this.veteran.photo 
+        }else{
+          this.veteran.rubrics[0].image.includes('http') ? this.avatarUrl = this.veteran.rubrics[0].image : this.avatarUrl = this.protocol+'://'+this.host+':'+this.port+'/storage/'+this.veteran.rubrics[0].image 
+        }
+      } else {
+        console.log(response)
+      }
+    })
+  }
   checkPhoto(url:string){
     let rightUrl = ''
     url.includes('http') ? this.avatarUrl = rightUrl = url : this.protocol + '://' + this.host+ ':' + this.port + '/storage/' + url
@@ -104,23 +133,10 @@ export class VeteranShowComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-  
-    // this.veteransService.getVeteranById(this.rout.snapshot.params['id']).pipe(
-    //   catchError((err: Error) => {
-    //     console.log(err)
-
-    //     return of("Error:" + err.message)
-    //   })
-    // )
-    // .subscribe((response: any) => {
-    //   console.log(response)
-    //   if (response.hero) {
-    //     this.veteran = response.hero
-    //     this.url = `${this.url}/${this.veteran.file_name}`
-    //   } else {
-    //     console.log(response)
-    //   }
-    // })
+    if(!this.veteran){
+      this.activityService.restartTimer()
+      this.getVeteran()
+    }
   }
 
 
