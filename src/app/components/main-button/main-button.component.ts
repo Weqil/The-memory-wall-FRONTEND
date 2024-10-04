@@ -4,12 +4,14 @@ import { environment } from '../../../environments/environments';
 import { RouterLink } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
 import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-main-button',
   standalone: true,
   imports: [
     RouterLink,
-    CommonModule
+    CommonModule,
+    NgClass
   ],
   templateUrl: './main-button.component.html',
   styleUrl: './main-button.component.scss'
@@ -23,6 +25,7 @@ export class MainButtonComponent {
 public host:string = environment.backHost
 public port:string = environment.backPort
 public protocol:string = environment.backProtocol
+@Input() reversed:boolean = false
 
 setFilter(){
   this.filterService.setRubricIds(`${this.rubric.id}`)

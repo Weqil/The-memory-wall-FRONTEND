@@ -8,22 +8,8 @@
 
    <div class="grid-wrapper">
     <div class="button-grid">
-        <!-- <div routerLink="/veterans/wow" class="button-wrapper">
-            <div style="background-image: url('assets/imgs/wow.jpg');" class="button-grid-item"></div>
-            <div class="button-grid-item_text">ВЕТЕРАНЫ ВОВ ЗАРЕЧНОГО</div>
-        </div>
-
-        <div  routerLink="/veterans/polk" class="button-wrapper">
-            <div style="background-image: url('assets/imgs/besmertnii.jpg');" class="button-grid-item"></div>
-            <div class="button-grid-item_text">БЕСМЕРТНЫЙ ПОЛК</div>
-        </div>
-
-        <div routerLink="/memory" class="button-wrapper">
-            <div style="background-image: url('assets/imgs/pamyat.jpg');" class="button-grid-item"></div>
-            <div class="button-grid-item_text">ПАМЯТЬ НАРОДА</div>
-        </div> -->
-        <ng-container *ngFor="let rubric of rubrics">
-            <app-main-button [rubric]="rubric"></app-main-button>
+        <ng-container *ngFor="let rubric of rubrics; let i = index">
+            <app-main-button [rubric]="rubric"  [reversed]="!(i % 2 == 0)"></app-main-button>
         </ng-container>
     </div>
    </div>

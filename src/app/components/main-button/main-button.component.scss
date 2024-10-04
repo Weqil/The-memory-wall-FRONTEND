@@ -42,8 +42,20 @@
         cursor: pointer;
         background-size: cover;
         background-position: center;
+        margin-left: 10vw;
         object-fit: fill;
-        width: 100%;
+        min-width: 25%;
+        border-radius: 2.5vh;
+        height: 14vh;
+        background-color: #fff;
+    }
+    .button-grid-item__reversed{
+        cursor: pointer;
+        background-size: cover;
+        background-position: center;
+        margin-right: 10vw;
+        object-fit: fill;
+        min-width: 25%;
         border-radius: 2.5vh;
         height: 14vh;
         background-color: #fff;
@@ -60,28 +72,40 @@
         justify-content: center;
          object-fit: cover;
      }
-     .button-grid{
-        margin-top: 10vw;
-        width: 100vw;
-        display: grid;
-        grid-template-columns: repeat(3, 30vw);
-        justify-content: center;
-        grid-gap: 1em 3vw;
-   }
+  
 }
 
 .button-grid-item_text{
     margin-top: 0.5vh;
     color: #fff;
-    height: 1vh;
-    text-align: center;
+    margin-right: 10vw;
     font-family: 'gotham-bold';
-    font-size: 1.6vh;
+    font-size: 1.1vh;
+}
+.button-grid-item_text__reversed{
+    margin-top: 0.5vh;
+    color: #fff;
+    margin-left: 10vw;
+    font-family: 'gotham-bold';
+    font-size: 1.1vh;
+
 }
 .button-wrapper{
+    width: 100vw;
     display: flex;
-    grid-row: 2;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    gap: 5vw;
+    padding-bottom: 1vh;
+    border-bottom: 0.2vh solid #838282be;
 }
+.button-wrapper__reverse{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    gap: 5vw;
+    padding-bottom: 1vh;
+    border-bottom: 0.2vh solid #838282be;
+}
+
+// flex-flow: row-reverse;

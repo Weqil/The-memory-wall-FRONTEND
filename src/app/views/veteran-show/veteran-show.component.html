@@ -32,7 +32,7 @@
             </div>
           </div>
           <div #scrollElement class="content-info_main_second-info">
-            <div class="description">
+            <div *ngIf="veteran.rank" class="description">
               <div class="title-information-section">Воинское звание</div>
               <div class="description_text">
                 {{veteran.rank}}

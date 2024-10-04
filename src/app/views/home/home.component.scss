@@ -74,11 +74,11 @@
      .button-grid{
         z-index: 20;
         width: 100vw;
-        display: grid;
-        grid-template-columns: repeat(2, 30%);
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;       
         align-items: center;
-        grid-gap: 10vh 10vw;
+        grid-gap: 4vh 10vw;
    }
 }
 
@@ -97,4 +97,12 @@
     width: 100%;
     height: 100%;
     opacity: 0.8;
+}
+.button-wrapper:nth-child(2n){
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    gap: 2vw;
 }

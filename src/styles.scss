@@ -142,3 +142,11 @@ body,html{
     padding-left: 0.8vh;
     // top: 34%;
 }
+.button-wrapper:nth-child(2n){
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    gap: 2vw;
+}
