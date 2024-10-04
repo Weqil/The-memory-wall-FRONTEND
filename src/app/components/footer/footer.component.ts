@@ -24,8 +24,6 @@ export class FooterComponent implements OnInit {
       if(this.url){
         this.url.includes('/veteran/' ) ? this.url = '/veteran/' : ''
       }
-
-      console.log(this.url)
     })
   }
 }
