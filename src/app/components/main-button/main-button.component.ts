@@ -31,6 +31,6 @@ setFilter(){
   this.filterService.setRubricIds(`${this.rubric.id}`)
 }
 goToRemember() {
-  document.location.href = `https://pamyat-naroda.ru/heroes/`
+  document.location.href = `https://pamyat-naroda.ru/heroes/?editable=true`
 }
 }

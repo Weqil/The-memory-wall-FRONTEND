@@ -33,10 +33,6 @@ export class HomeComponent implements OnInit {
   }
   public rubrics?:IRubrics[]
   getRubric():void{
-    if(!this.activityService.showPlug.value){
-      this.ngxUiLoaderService.start()
-    }
-  
     this.rubricService.getRubric(this.queryBuilderService.quertyBuilder('veteransForPage')).pipe().subscribe((data) => {
       this.ngxUiLoaderService.stop()
       this.rubrics = data.rubric;
