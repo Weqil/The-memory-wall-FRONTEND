@@ -24,7 +24,10 @@
                 </div>
                 <div class="years-of-life">
                   <span>Годы жизни:</span>
-                  <span class="years-of-life_date">{{veteran.birthday? veteran.birthday: ' нет данных' }} - {{'  '+ veteran.deathday? veteran.deathday:' нет данных'}}</span>
+                  <span class="years-of-life_date"> 
+                    <ng-container *ngIf="veteran.birthday; else notFound ">{{veteran.birthday}}</ng-container> - <ng-container *ngIf=" veteran.deathday; else notFound">{{ veteran.deathday}}</ng-container>
+                    <ng-template #notFound>нет данных</ng-template>
+                  </span>
                 </div>
                 <div *ngIf="veteran.birthday_place" class="birthday-place">
                   <span>Место рождения: </span>
